@@ -13,6 +13,7 @@ public class HomeScreenView extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     TextView hsText;
+    FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +21,17 @@ public class HomeScreenView extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen_view);
         mAuth = FirebaseAuth.getInstance();
         hsText = (TextView) findViewById(R.id.hsText);
+        currentUser = mAuth.getCurrentUser();
+
     }
 
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
-        hsText.setText(currentUser.getEmail().toString());
+        if (currentUser != null) {
+            hsText.setText(currentUser.getEmail().toString());
+        }
+
     }
 }
