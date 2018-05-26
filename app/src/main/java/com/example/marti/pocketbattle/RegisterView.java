@@ -15,60 +15,49 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginView extends AppCompatActivity {
+public class RegisterView extends AppCompatActivity {
 
-    EditText usernameInput;
-    EditText passwordInput;
-    Button loginButton;
-    Button registerButton;
 
     private FirebaseAuth mAuth;
     private static final String TAG = "LoginView";
 
+    EditText username;
+    EditText password;
+    EditText email;
+    Button regButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_view);
+        setContentView(R.layout.activity_register_view);
 
-        usernameInput = (EditText) findViewById(R.id.usernameTextField);
-        passwordInput = (EditText) findViewById(R.id.passwordTextField);
-        loginButton = (Button) findViewById(R.id.loginButton);
-        registerButton = (Button) findViewById(R.id.registerButton);
+        username = (EditText) findViewById(R.id.usernameRegField) ;
+        password = (EditText) findViewById(R.id.passwordRegField);
+        email = (EditText) findViewById(R.id.emailRegField);
+        regButton = (Button) findViewById(R.id.registerRegButton);
+
         mAuth = FirebaseAuth.getInstance();
 
-        registerButton.setOnClickListener(event ->{
-            startActivity(new Intent(LoginView.this, RegisterView.class));
+        regButton.setOnClickListener( event -> {
+            createAccount(email.getText().toString(), password.getText().toString());
+            startActivity(new Intent(RegisterView.this, LoginView.class));
         });
-
-        loginButton.setOnClickListener(event ->{
-            singIn(usernameInput.getText().toString(), passwordInput.getText().toString());
-            startActivity(new Intent(LoginView.this, HomeScreenView.class));
-        });
-
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        //updateUI(currentUser);
-    }
-
-    public void singIn(String email, String password){
-        mAuth.signInWithEmailAndPassword(email, password)
+    public void createAccount(String username, String password){
+        mAuth.createUserWithEmailAndPassword(username, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
+                            Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginView.this, "Authentication failed.",
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(RegisterView.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
@@ -77,8 +66,4 @@ public class LoginView extends AppCompatActivity {
                     }
                 });
     }
-
-
-
-
 }
