@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterView" />
-        <activity android:name=".HomeScreenView"></activity>
+        <activity android:name=".HomeScreenView" />
+        <activity android:name=".pokemon.PokemonList"></activity>
     </application>
 
 </manifest>

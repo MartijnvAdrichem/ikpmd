@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/selectableItemBackground" >
+
+    <TextView
+        android:id="@+id/pokemon_name"
+        android:layout_width="262dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="7dp"
+        android:text="Pokemon name"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
+        app:layout_constraintEnd_toStartOf="@+id/pokemon_level"
+        app:layout_constraintStart_toEndOf="@+id/pokemon_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pokemon_level"
+        android:layout_width="30dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="16dp"
+        android:text="999"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pokemon_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/pokemon_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="7dp"
+        app:layout_constraintEnd_toStartOf="@+id/pokemon_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/alert_light_frame" />
+
+</android.support.constraint.ConstraintLayout>
