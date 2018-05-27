@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".RegisterView" />
         <activity android:name=".HomeScreenView" />
-        <activity android:name=".pokemon.PokemonList"></activity>
+        <activity android:name=".pokemon.PokemonList" />
+        <activity android:name=".pokemon.PokemonDetailView"></activity>
     </application>
 
 </manifest>

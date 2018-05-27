@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pokemon.PokemonDetailView">
+
+    <ImageView
+        android:id="@+id/pokemon_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/pokemon_name_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pokemon_name_label"
+        android:layout_width="192dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="PokemonName"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/pokemon_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="43dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="20dp"
+        android:text="Level"
+        app:layout_constraintStart_toEndOf="@+id/pokemon_image"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon_name_label" />
+
+    <TextView
+        android:id="@+id/pokemon_level_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="999"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon_name_label" />
+
+    <ProgressBar
+        android:id="@+id/pokemon_levelprogress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="208dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pokemon_image"
+        app:layout_constraintTop_toBottomOf="@+id/pokeon_currentxp_label" />
+
+    <TextView
+        android:id="@+id/pokeon_currentxp_label"
+        android:layout_width="62dp"
+        android:layout_height="19dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:text="99999"
+        app:layout_constraintEnd_toStartOf="@+id/pokemon_nextlevelxp_label"
+        app:layout_constraintStart_toEndOf="@+id/pokemon_image"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/pokemon_nextlevelxp_label"
+        android:layout_width="58dp"
+        android:layout_height="19dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="43dp"
+        android:text="99999"
+        android:textAlignment="viewEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon_name_label" />
+</android.support.constraint.ConstraintLayout>

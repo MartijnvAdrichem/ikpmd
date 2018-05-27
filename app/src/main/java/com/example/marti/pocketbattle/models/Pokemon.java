@@ -1,20 +1,21 @@
 package com.example.marti.pocketbattle.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pokemon {
+public class Pokemon implements Serializable{
 
     public int id;
-   public String name;
+    public String name;
 
-    int level;
-    int experience;
-    int xpForNextLevel;
+    public int level = 2;
+    public int experience = 210;
+    public int xpForNextLevel = 280;
+    public int beginXpLevel = 190;
 
-    int pointsAttack;
-    int pointsAccuracy;
-    int pointsHitpoints;
-    int pointsDefence;
+    public int pointsAttack;
+    public int pointsHitpoints;
+    public int pointsDefence;
 
     ArrayList<PokemonType> pokemonTypes;
 

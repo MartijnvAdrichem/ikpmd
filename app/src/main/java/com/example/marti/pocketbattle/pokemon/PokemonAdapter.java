@@ -45,8 +45,7 @@ public class PokemonAdapter  extends ArrayAdapter<Pokemon> {
             InputStream ims = getContext().getAssets().open("pokemon/" + pokemon.id + ".png");
             Drawable d = Drawable.createFromStream(ims, null);
             vh.pokemonImage.setImageDrawable(d);
-        }
-        catch(IOException ex) {
+        } catch(IOException ex) {
             ex.printStackTrace();
         }
         vh.name.setText((CharSequence) pokemon.name);

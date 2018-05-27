@@ -1,5 +1,6 @@
 package com.example.marti.pocketbattle.pokemon;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +28,11 @@ public class PokemonList extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                              @Override
                                              public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
+                                                 Intent intent = new Intent(PokemonList.this, PokemonDetailView.class);
+                                                 Bundle b = new Bundle();
+                                                 b.putSerializable("pokemon", pokemons.get(position));
+                                                 intent.putExtras(b);
+                                                 startActivity(intent);
                                              }
                                          }
         );
