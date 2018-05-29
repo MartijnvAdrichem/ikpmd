@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.marti.pocketbattle.pokemon.PokemonList;
@@ -17,7 +18,7 @@ public class HomeScreenView extends AppCompatActivity {
     private FirebaseAuth mAuth;
     TextView hsText;
     FirebaseUser currentUser;
-    Button listViewButton;
+    ImageButton listViewButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public class HomeScreenView extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen_view);
         mAuth = FirebaseAuth.getInstance();
         hsText = (TextView) findViewById(R.id.hsText);
-        listViewButton = findViewById(R.id.listviewbutton);
+        listViewButton = findViewById(R.id.pokemonButton);
         currentUser = mAuth.getCurrentUser();
 
     }
@@ -35,7 +36,7 @@ public class HomeScreenView extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         //updateUI(currentUser);
         if (currentUser != null) {
-            hsText.setText(currentUser.getEmail().toString());
+            hsText.setText("Welcome, "+currentUser.getEmail().toString());
         }
 
         listViewButton.setOnClickListener(e -> {
