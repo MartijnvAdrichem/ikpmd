@@ -47,7 +47,7 @@ public class PokemonAdapter  extends ArrayAdapter<Pokemon> {
         } catch(IOException ex) {
             ex.printStackTrace();
         }
-        vh.name.setText((CharSequence) pokemon.name);
+        vh.name.setText((CharSequence) pokemon.identifier);
 //        int resID = getContext().getResources().getIdentifier("pokemon/0.png", "drawable",  getContext().getPackageName());
 //        vh.pokemonImage.setImageResource(resID);
 //        Picasso.get().load("file:///assets/1.png").resize(160, 160).into(vh.pokemonImage);

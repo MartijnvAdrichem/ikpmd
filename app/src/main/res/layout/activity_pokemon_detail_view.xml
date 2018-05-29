@@ -49,11 +49,12 @@
 
     <ProgressBar
         android:id="@+id/pokemon_levelprogress_bar"
-        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="208dp"
-        android:layout_height="18dp"
+        android:layout_height="15dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="20dp"
+        android:max="50"
+        android:progress="25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pokemon_image"
         app:layout_constraintTop_toBottomOf="@+id/pokeon_currentxp_label" />

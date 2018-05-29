@@ -9,6 +9,11 @@ import android.widget.ListView;
 
 import com.example.marti.pocketbattle.R;
 import com.example.marti.pocketbattle.models.Pokemon;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +23,9 @@ public class PokemonList extends AppCompatActivity {
     private ListView mListView;
     private PokemonAdapter mAdapter;
     private List<Pokemon> pokemons = new ArrayList<>();
+
+    private static PokemonFirebase pokemonFirebase;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,25 +44,32 @@ public class PokemonList extends AppCompatActivity {
                                              }
                                          }
         );
-        pokemons.add(new Pokemon(1, "Bulbasaur"));
-        pokemons.add(new Pokemon(2, "Bulbasaur"));
-        pokemons.add(new Pokemon(3, "Bulbasaur"));
-        pokemons.add(new Pokemon(4, "Bulbasaur"));
-        pokemons.add(new Pokemon(5, "Bulbasaur"));
-        pokemons.add(new Pokemon(6, "Bulbasaur"));
-        pokemons.add(new Pokemon(7, "Bulbasaur"));
-        pokemons.add(new Pokemon(8, "Bulbasaur"));
-        pokemons.add(new Pokemon(9, "Bulbasaur"));
-        pokemons.add(new Pokemon(10, "Bulbasaur"));
-        pokemons.add(new Pokemon(11, "Bulbasaur"));
-        pokemons.add(new Pokemon(12, "Bulbasaur"));
-        pokemons.add(new Pokemon(13, "Bulbasaur"));
-        pokemons.add(new Pokemon(14, "Bulbasaur"));
-        pokemons.add(new Pokemon(15, "Bulbasaur"));
-        pokemons.add(new Pokemon(16, "Bulbasaur"));
-        pokemons.add(new Pokemon(17, "Bulbasaur"));
-        mAdapter = new PokemonAdapter(PokemonList.this, 0, pokemons);
-        mListView.setAdapter(mAdapter);
+        pokemons = getAllPokemon();
 
+    }
+
+    public ArrayList<Pokemon> getAllPokemon(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Pokemon");
+        ArrayList<Pokemon> pokemons = new ArrayList<>();
+
+        myRef.limitToFirst(152).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot d : dataSnapshot.getChildren()){
+                    Pokemon pokemon = d.getValue(Pokemon.class);
+                    pokemons.add(pokemon);
+                }
+                mAdapter = new PokemonAdapter(PokemonList.this, 0, pokemons);
+                mListView.setAdapter(mAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+        return pokemons;
     }
 }
