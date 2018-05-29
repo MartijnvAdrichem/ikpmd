@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.marti.pocketbattle.R;
 import com.example.marti.pocketbattle.models.Pokemon;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
