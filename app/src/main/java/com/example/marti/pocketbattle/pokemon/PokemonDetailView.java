@@ -41,7 +41,7 @@ public class PokemonDetailView extends AppCompatActivity {
         }
 
         if(pokemon != null){
-            nameTextView.setText(pokemon.name);
+            nameTextView.setText(pokemon.identifier);
             levelTextView.setText(pokemon.level + "");
             currentXpTextView.setText(pokemon.experience + "");
             nextLevelXpTextView.setText(pokemon.xpForNextLevel + "");
