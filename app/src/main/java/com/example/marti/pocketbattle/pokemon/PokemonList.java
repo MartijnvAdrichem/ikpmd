@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.marti.pocketbattle.HomeScreenView;
 import com.example.marti.pocketbattle.R;
 import com.example.marti.pocketbattle.models.Pokemon;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +28,7 @@ public class PokemonList extends AppCompatActivity {
 
     private static PokemonFirebase pokemonFirebase;
     private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class PokemonList extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                              @Override
                                              public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                                                // ArrayList<Pokemon> pokemons = new ArrayList<>();
+
                                                  Intent intent = new Intent(PokemonList.this, PokemonDetailView.class);
                                                  Bundle b = new Bundle();
                                                  b.putSerializable("pokemon", pokemons.get(position));
@@ -50,14 +55,15 @@ public class PokemonList extends AppCompatActivity {
 
     public ArrayList<Pokemon> getAllPokemon(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pokemon");
+        DatabaseReference myRef = database.getReference("users/" + HomeScreenView.currentUser.getUid() + "/pokemon");
         ArrayList<Pokemon> pokemons = new ArrayList<>();
 
-        myRef.limitToFirst(152).addValueEventListener(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot d : dataSnapshot.getChildren()){
                     Pokemon pokemon = d.getValue(Pokemon.class);
+                    pokemon.key = d.getKey();
                     pokemons.add(pokemon);
                 }
                 mAdapter = new PokemonAdapter(PokemonList.this, 0, pokemons);
@@ -72,4 +78,5 @@ public class PokemonList extends AppCompatActivity {
         });
         return pokemons;
     }
+
 }

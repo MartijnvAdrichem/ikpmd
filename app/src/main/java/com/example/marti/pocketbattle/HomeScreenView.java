@@ -16,7 +16,7 @@ public class HomeScreenView extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     TextView hsText;
-    FirebaseUser currentUser;
+    public static FirebaseUser currentUser;
     Button listViewButton;
 
     @Override
