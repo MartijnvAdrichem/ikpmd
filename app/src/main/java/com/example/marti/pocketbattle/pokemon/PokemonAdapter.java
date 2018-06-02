@@ -33,6 +33,7 @@ public class PokemonAdapter  extends ArrayAdapter<Pokemon> {
             convertView = li.inflate(R.layout.view_pokemonlist_row, parent, false);
             vh.name = (TextView) convertView.findViewById(R.id.pokemon_name);
             vh.pokemonImage = (ImageView) convertView.findViewById(R.id.pokemon_image);
+            vh.level =  convertView.findViewById(R.id.pokemon_level);
             convertView.setTag(vh);
         } else {
             vh = (ViewHolder) convertView.getTag();
@@ -48,6 +49,7 @@ public class PokemonAdapter  extends ArrayAdapter<Pokemon> {
             ex.printStackTrace();
         }
         vh.name.setText((CharSequence) pokemon.identifier);
+        vh.level.setText(pokemon.level + "");
 //        int resID = getContext().getResources().getIdentifier("pokemon/0.png", "drawable",  getContext().getPackageName());
 //        vh.pokemonImage.setImageResource(resID);
 //        Picasso.get().load("file:///assets/1.png").resize(160, 160).into(vh.pokemonImage);
@@ -57,6 +59,7 @@ public class PokemonAdapter  extends ArrayAdapter<Pokemon> {
 
     private static class ViewHolder {
         TextView name;
+        TextView level;
         ImageView pokemonImage;
     }
 
