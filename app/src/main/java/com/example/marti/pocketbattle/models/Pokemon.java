@@ -13,8 +13,8 @@ public class Pokemon implements Serializable{
     public int weight;
     public int height;
 
-
-    public int level = 1;
+    public int iv = 0;
+    public int level = 0;
     public int experience = 0;
     public int xpForNextLevel = 0;
     public int beginXpLevel = 0;
@@ -24,6 +24,11 @@ public class Pokemon implements Serializable{
     public int attack;
     public int hp;
     public int defence;
+
+    public int base_attack;
+    public int base_hp;
+    public int base_defence;
+
 
     ArrayList<PokemonType> pokemonTypes;
    public ArrayList<Move> moves;
@@ -36,6 +41,8 @@ public class Pokemon implements Serializable{
 
 
     public Pokemon(Pokemon pokemon) {
+        iv = ThreadLocalRandom.current().nextInt(0, 30);
+
         this.id = pokemon.id;
         this.identifier = pokemon.identifier;
         this.key = pokemon.key;
@@ -46,11 +53,12 @@ public class Pokemon implements Serializable{
         this.xpForNextLevel = pokemon.xpForNextLevel;
         this.beginXpLevel = pokemon.beginXpLevel;
         this.base_experience = pokemon.base_experience;
-        this.attack = pokemon.attack;
-        this.hp = pokemon.hp;
-        this.defence = pokemon.defence;
+        this.base_attack = pokemon.attack;
+        this.base_hp = pokemon.hp;
+        this.base_defence = pokemon.defence;
         this.pokemonTypes = pokemon.pokemonTypes;
         this.moves = pokemon.moves;
+        levelup(true);
     }
 
     public Pokemon() {
@@ -63,16 +71,11 @@ public class Pokemon implements Serializable{
     }
 
     public void levelup(boolean cheatXp){
-        for (int i = 0; i < (level > 50 ? 50 : level); i++) {
-            int randomNum = ThreadLocalRandom.current().nextInt(0, 3);
-            if(randomNum == 0){
-                hp +=  1;
-            } else if(randomNum == 1){
-                attack += 1;
-            } else if(randomNum == 2){
-                defence += 1;
-            }
-        }
+
+        hp = ((iv + 2 * base_hp) * level/100 ) + 10 + level;
+        defence = ((iv + 2 * base_defence) * level/100 ) + 5;
+        attack = ((iv + 2 * base_hp) * level/100 ) + 5;
+
         level++;
         beginXpLevel = xpForNextLevel;
         xpForNextLevel += (int)(base_experience * (1 + (0.25 * level)));

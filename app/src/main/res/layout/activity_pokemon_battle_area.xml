@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pokemon.PokemonBattleArea">
+
+    <ProgressBar
+        android:id="@+id/pokemon_hpbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="179dp"
+        android:layout_height="17dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/pokemon_hp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView19" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="1dp"
+        android:text="lv"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toTopOf="@+id/pokemon_hpbar"
+        app:layout_constraintEnd_toStartOf="@+id/pokemon_level"
+        app:layout_constraintStart_toEndOf="@+id/pokemon_name" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginStart="33dp"
+        android:text="hp"
+        app:layout_constraintStart_toEndOf="@+id/pokemon_image"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon_name" />
+
+    <TextView
+        android:id="@+id/pokemon_hp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
+        android:layout_marginEnd="16dp"
+        android:text="999/999"
+        app:layout_constraintBottom_toTopOf="@+id/textView23"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/pokemon_name"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:text="Pickacu"
+        app:layout_constraintBottom_toTopOf="@+id/pokemon_hpbar"
+        app:layout_constraintEnd_toStartOf="@+id/textView18"
+        app:layout_constraintStart_toEndOf="@+id/pokemon_image" />
+
+    <TextView
+        android:id="@+id/pokemon_level"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="2dp"
+        android:text="999"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toTopOf="@+id/pokemon_hpbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView18" />
+
+    <ImageView
+        android:id="@+id/pokemon_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="11dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView23"
+        app:layout_constraintEnd_toStartOf="@+id/textView19"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <ImageView
+        android:id="@+id/enemy_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/enemy_hpbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <ProgressBar
+        android:id="@+id/enemy_hpbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="179dp"
+        android:layout_height="17dp"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="23dp"
+        android:text="lv"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toTopOf="@+id/enemy_hpbar"
+        app:layout_constraintEnd_toStartOf="@+id/enemy_level"
+        app:layout_constraintStart_toEndOf="@+id/enemy_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/enemy_level"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="21dp"
+        android:layout_marginTop="23dp"
+        android:text="999"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toTopOf="@+id/enemy_hpbar"
+        app:layout_constraintEnd_toStartOf="@+id/enemy_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/enemy_name"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="23dp"
+        android:text="Pickacu"
+        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/enemy_hp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="21dp"
+        android:layout_marginStart="171dp"
+        android:text="999/999"
+        app:layout_constraintEnd_toStartOf="@+id/enemy_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enemy_hpbar" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginStart="28dp"
+        android:text="hp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enemy_name" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="328dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="170dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ListView
+        android:id="@+id/moves_list"
+        android:layout_width="344dp"
+        android:layout_height="154dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+</android.support.constraint.ConstraintLayout>
