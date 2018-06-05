@@ -23,6 +23,7 @@ public class Pokemon implements Serializable{
 
     public int attack;
     public int hp;
+    public int currentHp;
     public int defence;
 
     public int base_attack;

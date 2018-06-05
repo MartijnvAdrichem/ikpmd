@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/move_accuracy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="29dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="100"
+        app:layout_constraintEnd_toStartOf="@+id/move_useleft"
+        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/move_name"
+        android:layout_width="189dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/move_useleft"
+        android:layout_width="18dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="16dp"
+        android:text="99"
+        android:textAlignment="textEnd"
+        app:layout_constraintStart_toEndOf="@+id/move_accuracy"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="9dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
+        android:text="/"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/move_maxuse"
+        app:layout_constraintStart_toEndOf="@+id/move_useleft"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/move_maxuse"
+        android:layout_width="18dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:text="99"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/move_power"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="43dp"
+        android:text="99"
+        app:layout_constraintEnd_toStartOf="@+id/move_useleft"
+        app:layout_constraintStart_toEndOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/move_accuracy" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="accuracy"
+        app:layout_constraintStart_toEndOf="@+id/move_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="power"
+        app:layout_constraintStart_toEndOf="@+id/move_name"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+</android.support.constraint.ConstraintLayout>
