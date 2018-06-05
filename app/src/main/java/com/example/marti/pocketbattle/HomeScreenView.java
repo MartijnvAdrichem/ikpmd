@@ -19,6 +19,7 @@ public class HomeScreenView extends AppCompatActivity {
     TextView hsText;
     FirebaseUser currentUser;
     ImageButton listViewButton;
+    ImageButton battleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,10 @@ public class HomeScreenView extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         hsText = (TextView) findViewById(R.id.hsText);
         listViewButton = findViewById(R.id.pokemonButton);
-        currentUser = mAuth.getCurrentUser();
+        battleButton = findViewById(R.id.battleButton);
 
+        currentUser = mAuth.getCurrentUser();
+        battleButton = findViewById(R.id.battle_button);
     }
 
     public void onStart() {
@@ -44,5 +47,9 @@ public class HomeScreenView extends AppCompatActivity {
 
         });
 
+        battleButton.setOnClickListener(e -> {
+            startActivity(new Intent(HomeScreenView.this, PokemonSelectBattleList.class));
+
+        });
     }
 }

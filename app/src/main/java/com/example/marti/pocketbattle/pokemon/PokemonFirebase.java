@@ -30,7 +30,7 @@ public class PokemonFirebase {
 
     public ArrayList<Pokemon> getAllPokemon(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pokemon");
+        DatabaseReference myRef = database.getReference("pokemon");
         ArrayList<Pokemon> pokemons = new ArrayList<>();
 
         myRef.limitToFirst(100).addValueEventListener(new ValueEventListener() {

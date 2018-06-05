@@ -21,6 +21,9 @@ public class PokemonDetailView extends AppCompatActivity {
     TextView levelTextView;
     TextView currentXpTextView;
     TextView nextLevelXpTextView;
+    TextView hitpointsTextView;
+    TextView attackpointsTextView;
+    TextView defencepointsTextView;
     ProgressBar levelProgessBar;
     ImageView pokemonImage;
 
@@ -34,6 +37,9 @@ public class PokemonDetailView extends AppCompatActivity {
         nextLevelXpTextView = findViewById(R.id.pokemon_nextlevelxp_label);
         levelProgessBar = findViewById(R.id.pokemon_levelprogress_bar);
         pokemonImage = findViewById(R.id.pokemon_image);
+        hitpointsTextView = findViewById(R.id.label_hitpoints);
+        attackpointsTextView = findViewById(R.id.label_attack);
+        defencepointsTextView = findViewById(R.id.label_defence);
 
         Bundle b = getIntent().getExtras();
         if(b != null) {
@@ -47,6 +53,9 @@ public class PokemonDetailView extends AppCompatActivity {
             nextLevelXpTextView.setText(pokemon.xpForNextLevel + "");
             levelProgessBar.setMax(pokemon.xpForNextLevel - pokemon.beginXpLevel);
             levelProgessBar.setProgress(pokemon.experience - pokemon.beginXpLevel);
+            attackpointsTextView.setText(pokemon.attack + "");
+            defencepointsTextView.setText(pokemon.defence + "");
+            hitpointsTextView.setText(pokemon.hp + "");
 
             try {
                 InputStream ims = getAssets().open("pokemon/" + pokemon.id + ".png");

@@ -19,7 +19,9 @@
         <activity android:name=".RegisterView" />
         <activity android:name=".HomeScreenView" />
         <activity android:name=".pokemon.PokemonList" />
-        <activity android:name=".pokemon.PokemonDetailView"></activity>
+        <activity android:name=".pokemon.PokemonDetailView" />
+        <activity android:name=".pokemon.PokemonSelectBattleList" />
+        <activity android:name=".pokemon.PokemonBattleArea"></activity>
     </application>
 
 </manifest>
