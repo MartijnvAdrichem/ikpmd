@@ -90,8 +90,8 @@ public class RegisterView extends AppCompatActivity {
                         int randomNum = ThreadLocalRandom.current().nextInt(0, 50);
                         Pokemon pokemon = new Pokemon(pokemons.get(randomNum));
                         pokemon.xpForNextLevel = pokemon.base_experience;
-                        pokemon.addExperience(ThreadLocalRandom.current().nextInt(0, 50000));
-
+                        //pokemon.addExperience(ThreadLocalRandom.current().nextInt(0, 50000));
+                        pokemon.levelup(true);
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference myRef = database.getReference("users/" + user.getUid() + "/pokemon/");
                         myRef.push().setValue(pokemon);

@@ -9,6 +9,7 @@ public class Move implements Serializable {
     public int id;
     public int power;
     public int pp;
+    public int ppLeft;
     public int type_id;
 
     public Pivot pivot;

@@ -1,6 +1,7 @@
 package com.example.marti.pocketbattle.pokemon;
 
 import android.util.Log;
+import android.widget.ListView;
 
 import com.example.marti.pocketbattle.models.Pokemon;
 import com.google.firebase.database.DataSnapshot;
@@ -15,6 +16,7 @@ public class PokemonFirebase {
 
     private static PokemonFirebase pokemonFirebase;
     private DatabaseReference mDatabase;
+    private ListView mListView;
 
     public static PokemonFirebase getPokemonFirebase(){
         if(pokemonFirebase == null){
