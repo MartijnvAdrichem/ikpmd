@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.marti.pocketbattle.pokemon.PokemonList;
+import com.example.marti.pocketbattle.pokemon.PokemonSelectBattleList;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -17,7 +18,7 @@ public class HomeScreenView extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     TextView hsText;
-    FirebaseUser currentUser;
+    public static FirebaseUser currentUser;
     ImageButton listViewButton;
     ImageButton battleButton;
 
@@ -31,7 +32,7 @@ public class HomeScreenView extends AppCompatActivity {
         battleButton = findViewById(R.id.battleButton);
 
         currentUser = mAuth.getCurrentUser();
-        battleButton = findViewById(R.id.battle_button);
+        battleButton = findViewById(R.id.battleButton);
     }
 
     public void onStart() {
