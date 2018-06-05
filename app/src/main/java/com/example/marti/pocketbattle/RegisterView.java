@@ -7,11 +7,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.marti.pocketbattle.models.Pokemon;
-import com.example.marti.pocketbattle.pokemon.PokemonAdapter;
-import com.example.marti.pocketbattle.pokemon.PokemonList;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -37,6 +37,22 @@ public class RegisterView extends AppCompatActivity {
     EditText password;
     EditText email;
     Button regButton;
+    RadioButton bulbasaurButton;
+    RadioButton charmanderButton;
+    RadioButton squirtleButton;
+    RadioGroup radioGroup;
+
+    RadioButton radioButton;
+
+    FirebaseDatabase database;
+    FirebaseUser user;
+
+    DatabaseReference userRef;
+    DatabaseReference pokemonRef;
+    DatabaseReference allePokemonRef;
+
+    int starterPokemonNr;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +64,34 @@ public class RegisterView extends AppCompatActivity {
         email = (EditText) findViewById(R.id.emailRegField);
         regButton = (Button) findViewById(R.id.registerRegButton);
 
+        bulbasaurButton = findViewById(R.id.bulbasaurButton);
+        charmanderButton = findViewById(R.id.charmanderButton);
+        squirtleButton = findViewById(R.id.squirtleButton);
+
+        radioGroup = findViewById(R.id.radioGroup);
+
         mAuth = FirebaseAuth.getInstance();
+
+        database = FirebaseDatabase.getInstance();
+
+        allePokemonRef = database.getReference("pokemon");
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if(bulbasaurButton.isChecked()) {
+                    starterPokemonNr = 0;
+                } else if(charmanderButton.isChecked()) {
+                    starterPokemonNr = 3;
+                } else if(squirtleButton.isChecked()) {
+                    starterPokemonNr = 6;
+                } else {
+                    starterPokemonNr = ThreadLocalRandom.current().nextInt(0,6);
+                }
+            }
+        });
 
         regButton.setOnClickListener( event -> {
             createAccount(email.getText().toString(), password.getText().toString());
@@ -60,24 +103,54 @@ public class RegisterView extends AppCompatActivity {
                 .addOnSuccessListener(RegisterView.this, new OnSuccessListener<AuthResult>(){
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                        giveUserPokemon();
+                        singIn(username, password);
+
+                    }
+                });
+
+
+    }
+
+    public void singIn(String email, String password) {
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+
+                            getReferences();
+                            //updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(RegisterView.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            //updateUI(null);
+                        }
+
+                        // ...
                     }
                 });
     }
 
+    public void getReferences(){
+        user = mAuth.getCurrentUser();
+        userRef = database.getReference("users/" + user.getUid());
+        pokemonRef = database.getReference("users/" + user.getUid() + "/pokemon/");
+
+        userRef.child("Username").setValue(username.getText().toString());
+
+        giveUserPokemon();
+    }
+
+
 
     public void giveUserPokemon(){
-        FirebaseUser user = mAuth.getCurrentUser();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        DatabaseReference myRef = database.getReference("users/" + 2 + "/");
-        DatabaseReference pokemonRef = database.getReference("pokemon");
-
-      //  myRef.push().setValue("username", username);
-
             ArrayList<Pokemon> pokemons = new ArrayList<>();
 
-        pokemonRef.addValueEventListener(new ValueEventListener() {
+        allePokemonRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for(DataSnapshot d : dataSnapshot.getChildren()){
@@ -86,17 +159,25 @@ public class RegisterView extends AppCompatActivity {
                         pokemons.add(pokemon);
                     }
 
-                    for (int i = 0; i < 6; i++) {
-                        int randomNum = ThreadLocalRandom.current().nextInt(0, 50);
+                    Pokemon starterPokemon = new Pokemon(pokemons.get(starterPokemonNr));
+
+                    System.out.println("STARTER POKEMON IS: " + starterPokemonNr);
+                    addPokemonToDatabase(starterPokemon);
+
+                    for (int i = 0; i < 5; i++) {
+                        int randomNum = ThreadLocalRandom.current().nextInt(9, 50);
                         Pokemon pokemon = new Pokemon(pokemons.get(randomNum));
-                        pokemon.xpForNextLevel = pokemon.base_experience;
-                        //pokemon.addExperience(ThreadLocalRandom.current().nextInt(0, 50000));
-                        pokemon.levelup(true);
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        DatabaseReference myRef = database.getReference("users/" + user.getUid() + "/pokemon/");
-                        myRef.push().setValue(pokemon);
+                        addPokemonToDatabase(pokemon);
+
                     }
                     startActivity(new Intent(RegisterView.this, LoginView.class));
+                }
+
+                public void addPokemonToDatabase(Pokemon pokemon){
+                    pokemon.xpForNextLevel = pokemon.base_experience;
+                    //pokemon.addExperience(ThreadLocalRandom.current().nextInt(0, 50000));
+                    pokemon.levelup(true);
+                    pokemonRef.push().setValue(pokemon);
                 }
 
                 @Override

@@ -13,7 +13,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="73dp"
         android:layout_marginStart="74dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:contentDescription="Username"
         android:ems="10"
         android:hint="Username"
@@ -43,13 +43,11 @@
         android:id="@+id/passwordRegField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_marginEnd="73dp"
         android:layout_marginStart="74dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/registerRegButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailRegField" />
@@ -58,15 +56,13 @@
         android:id="@+id/registerRegButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="43dp"
         android:layout_marginEnd="136dp"
         android:layout_marginStart="136dp"
-        android:layout_marginTop="20dp"
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordRegField" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/registerTextView"
@@ -82,4 +78,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="350dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="33dp"
+        android:baselineAligned="true"
+        android:orientation="horizontal"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/registerRegButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordRegField">
+
+        <RadioButton
+            android:id="@+id/bulbasaurButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Bulbasaur" />
+
+        <RadioButton
+            android:id="@+id/charmanderButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Charmander" />
+
+        <RadioButton
+            android:id="@+id/squirtleButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Squirtle" />
+    </RadioGroup>
+
 </android.support.constraint.ConstraintLayout>

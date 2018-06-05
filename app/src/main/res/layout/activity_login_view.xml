@@ -59,6 +59,21 @@
         app:layout_constraintTop_toBottomOf="@+id/titleView">
 
         <EditText
+            android:id="@+id/usernameTextField"
+            style="@android:style/Widget.Holo.Light.EditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="34dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="44dp"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
             android:id="@+id/passwordTextField"
             style="@android:style/Widget.Material.EditText"
             android:layout_width="wrap_content"
@@ -75,20 +90,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/usernameTextField" />
 
-        <EditText
-            android:id="@+id/usernameTextField"
-            style="@android:style/Widget.Holo.Light.EditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="34dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="44dp"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
     <ImageView

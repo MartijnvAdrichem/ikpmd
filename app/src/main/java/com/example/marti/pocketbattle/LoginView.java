@@ -44,7 +44,7 @@ public class LoginView extends AppCompatActivity {
 
         loginButton.setOnClickListener(event ->{
             singIn(usernameInput.getText().toString(), passwordInput.getText().toString());
-            startActivity(new Intent(LoginView.this, HomeScreenView.class));
+
         });
 
     }
@@ -54,7 +54,12 @@ public class LoginView extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        //updateUI(currentUser);
+
+        if(currentUser != null){
+            startActivity(new Intent(LoginView.this, HomeScreenView.class));
+        } else {
+
+        }
     }
 
     public void singIn(String email, String password){
@@ -66,16 +71,14 @@ public class LoginView extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            //updateUI(user);
+                            startActivity(new Intent(LoginView.this, HomeScreenView.class));
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginView.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
                         }
 
-                        // ...
                     }
                 });
     }
