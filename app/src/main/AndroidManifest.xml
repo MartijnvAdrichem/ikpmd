@@ -16,12 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterView" />
-        <activity android:name=".HomeScreenView" />
-        <activity android:name=".pokemon.PokemonList" />
-        <activity android:name=".pokemon.PokemonDetailView" />
-        <activity android:name=".pokemon.PokemonSelectBattleList" />
-        <activity android:name=".pokemon.PokemonBattleArea"></activity>
+        <activity android:name=".RegisterView" android:label="Register" />
+        <activity android:name=".HomeScreenView"  android:label="Home"/>
+        <activity android:name=".pokemon.PokemonList" android:label="My Pokémon" />
+        <activity android:name=".pokemon.PokemonDetailView" android:label="My Pokémon" />
+        <activity android:name=".pokemon.PokemonSelectBattleList" android:label="Prepare for Battle!" />
+        <activity android:name=".pokemon.PokemonBattleArea" android:label="BATTLE!!"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

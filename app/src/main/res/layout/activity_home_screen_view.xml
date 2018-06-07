@@ -4,19 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/HomeBackgroundColor"
     tools:context=".HomeScreenView">
 
     <TextView
         android:id="@+id/hsText"
-        android:layout_width="198dp"
+        android:layout_width="330dp"
         android:layout_height="37dp"
-        android:layout_marginEnd="146dp"
+        android:layout_marginEnd="14dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Welcome message"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-        android:textSize="15sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/battleButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,14 +32,15 @@
         android:layout_marginEnd="46dp"
         android:layout_marginStart="16dp"
         android:adjustViewBounds="false"
+        android:backgroundTint="@color/ButtonBackgroundColor"
         android:cropToPadding="false"
-        android:elevation="0dp"
+        android:elevation="2dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/profileButton"
         app:layout_constraintEnd_toStartOf="@+id/pokemonButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hsText"
-        app:srcCompat="@drawable/battle" />
+        app:srcCompat="@drawable/battle2" />
 
     <ImageButton
         android:id="@+id/pokemonButton"
@@ -46,13 +49,14 @@
         android:layout_marginBottom="44dp"
         android:layout_marginEnd="16dp"
         android:adjustViewBounds="true"
-        android:elevation="0dp"
+        android:backgroundTint="@color/ButtonBackgroundColor"
+        android:elevation="2dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/imageButton4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/battleButton"
         app:layout_constraintTop_toBottomOf="@+id/hsText"
-        app:srcCompat="@drawable/mypokemon" />
+        app:srcCompat="@drawable/mypokemon2" />
 
     <ImageButton
         android:id="@+id/profileButton"
@@ -61,6 +65,8 @@
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="46dp"
         android:layout_marginStart="16dp"
+        android:backgroundTint="@color/ButtonBackgroundColor"
+        android:elevation="2dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/logoutButton"
         app:layout_constraintEnd_toStartOf="@+id/imageButton4"
@@ -73,11 +79,13 @@
         android:layout_height="141dp"
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/ButtonBackgroundColor"
+        android:elevation="2dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/logoutButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/profileButton"
-        app:srcCompat="@drawable/highscores" />
+        app:srcCompat="@drawable/highscores3" />
 
     <Button
         android:id="@+id/logoutButton"
@@ -86,7 +94,10 @@
         android:layout_marginBottom="26dp"
         android:layout_marginEnd="136dp"
         android:layout_marginStart="136dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:elevation="20dp"
         android:text="Log Out"
+        android:textColor="?attr/colorBackgroundFloating"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
