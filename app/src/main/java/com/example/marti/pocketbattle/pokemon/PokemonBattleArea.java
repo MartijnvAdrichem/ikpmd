@@ -11,11 +11,13 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.marti.pocketbattle.HomeScreenView;
 import com.example.marti.pocketbattle.LoginView;
 import com.example.marti.pocketbattle.R;
 import com.example.marti.pocketbattle.RegisterView;
 import com.example.marti.pocketbattle.models.Move;
 import com.example.marti.pocketbattle.models.Pokemon;
+import com.example.marti.pocketbattle.models.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,10 +56,13 @@ public class PokemonBattleArea extends AppCompatActivity {
     private ListView moveList;
     private MoveAdapter moveAdapter;
 
+    private DatabaseReference userRef;
+    FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        database = FirebaseDatabase.getInstance();
         setContentView(R.layout.activity_pokemon_battle_area);
         userSelectedPokemon = new ArrayList<>();
 
@@ -143,6 +148,7 @@ public class PokemonBattleArea extends AppCompatActivity {
     private void killEnemyPokemon(){
         enemyFightingPos++;
         if(enemyFightingPos == 6){
+            winGame();
             return;
         }
         enemyFightingPokemon = computerSelectedPokemon.get(enemyFightingPos);
@@ -152,6 +158,7 @@ public class PokemonBattleArea extends AppCompatActivity {
     private void killUserPokemon(){
         userFightingPos++;
         if(userFightingPos == 6){
+            winGame();
             return;
         }
         userFightingPokemon = userSelectedPokemon.get(userFightingPos);
@@ -236,16 +243,40 @@ public class PokemonBattleArea extends AppCompatActivity {
         enemyFightingPokemon = computerSelectedPokemon.get(0);
         userFightingPokemon = userSelectedPokemon.get(0);
 
+
+
         for (Pokemon pokemon : userSelectedPokemon) {
+            pokemon.moves.forEach((move) -> {
+                if(move == null){
+                    pokemon.moves.remove(move);
+                }
+            });
             pokemon.currentHp = pokemon.hp;
+            if(pokemon.moves == null) {
+                continue;
+            }
             for (Move move : pokemon.moves){
+                if(move == null){
+                    continue;
+                }
                 move.ppLeft = move.pp;
             }
         }
 
         for (Pokemon pokemon : computerSelectedPokemon) {
+            pokemon.moves.forEach((move) -> {
+                        if(move == null){
+                            pokemon.moves.remove(move);
+                        }
+
             pokemon.currentHp = pokemon.hp;
+            if(pokemon.moves == null) {
+                continue;
+            }
             for (Move move : pokemon.moves){
+                if(move == null){
+                    continue;
+                }
                 move.ppLeft = move.pp;
             }
         }
@@ -253,6 +284,17 @@ public class PokemonBattleArea extends AppCompatActivity {
         moveList.setAdapter(moveAdapter);
         updateUI();
 
+
+    }
+
+    public void winGame(){
+        User user = HomeScreenView.user;
+        user.addXP(ThreadLocalRandom.current().nextInt(100, 150));
+        userRef = database.getReference("users/" + HomeScreenView.currentUser.getUid() + "/user");
+        userRef.push().setValue(HomeScreenView.user);
+    }
+
+    public void loseGame(){
 
     }
 }

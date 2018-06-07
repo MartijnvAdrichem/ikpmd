@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.marti.pocketbattle.models.User;
 import com.example.marti.pocketbattle.pokemon.PokemonList;
 import com.example.marti.pocketbattle.pokemon.PokemonSelectBattleList;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +30,7 @@ public class HomeScreenView extends AppCompatActivity {
     Button logoutButton;
 
     DatabaseReference userRef;
+    public static User user;
     FirebaseDatabase db;
 
     @Override
@@ -53,10 +55,13 @@ public class HomeScreenView extends AppCompatActivity {
 
         if (currentUser != null) {
 
-         userRef.child("Username").addValueEventListener(new ValueEventListener() {
+         userRef.addValueEventListener(new ValueEventListener() {
              @Override
              public void onDataChange(DataSnapshot dataSnapshot) {
-                 hsText.setText("Welcome, "+ dataSnapshot.getValue().toString());
+                 for(DataSnapshot d : dataSnapshot.getChildren()){
+                      user = d.getValue(User.class);
+                 }
+                 hsText.setText("Welcome, "+ user.username);
              }
 
              @Override
