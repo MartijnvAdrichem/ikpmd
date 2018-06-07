@@ -104,20 +104,20 @@ public class PokemonBattleArea extends AppCompatActivity {
     }
     private void userAttack(Move move){
         if(userFightingPokemon.level > enemyFightingPokemon.level) {
-          if(!calculateMoveDamage(userFightingPokemon, enemyFightingPokemon, move)) {
-             if(calculateMoveDamage(enemyFightingPokemon, userFightingPokemon, enemyFightingPokemon.moves.get(ThreadLocalRandom.current().nextInt(0, enemyFightingPokemon.moves.size())))){
-                 killUserPokemon();
-             }
-          } else {
+          if(calculateMoveDamage(userFightingPokemon, enemyFightingPokemon, move)) {
               killEnemyPokemon();
+          } else {
+              if(calculateMoveDamage(enemyFightingPokemon, userFightingPokemon, enemyFightingPokemon.moves.get(ThreadLocalRandom.current().nextInt(0, enemyFightingPokemon.moves.size())))){
+                  killUserPokemon();
+              }
           }
         } else {
             if(calculateMoveDamage(enemyFightingPokemon, userFightingPokemon, enemyFightingPokemon.moves.get(ThreadLocalRandom.current().nextInt(0, enemyFightingPokemon.moves.size())))) {
-                if( !calculateMoveDamage(userFightingPokemon, enemyFightingPokemon, move)){
+                killUserPokemon();
+            } else {
+                if(calculateMoveDamage(userFightingPokemon, enemyFightingPokemon, move)){
                     killEnemyPokemon();
                 }
-            } else {
-                killUserPokemon();
             }
 
         }
@@ -126,9 +126,18 @@ public class PokemonBattleArea extends AppCompatActivity {
 
     private boolean calculateMoveDamage(Pokemon attackingPokemon, Pokemon defendingPokemon, Move move){
 
-        int damage = ((((((2 * attackingPokemon.level) / 5) + 2) * move.power * (attackingPokemon.attack / defendingPokemon.defence)) / 50) +2);
-        defendingPokemon.currentHp -= damage;
-        return defendingPokemon.currentHp < 0;
+        int damage = (int)Math.floor(((((((2.0 * attackingPokemon.level) / 5.0) + 2.0) * move.power * (attackingPokemon.attack / defendingPokemon.defence)) / 50.0) +2.0));
+        double part1 = 2.0 * attackingPokemon.level;
+        double part2 = part1 / 5.0;
+        double part3 = part2 + 2;
+        double part4 = part3 * move.power;
+        double part5 = (attackingPokemon.attack + 0.0) / (defendingPokemon.defence + 0.0);
+        double part6 = part4 * part5;
+        double part7 = part6 / 50;
+        double part8 = part7 + 2;
+        int part9 =  (int) part7;
+        defendingPokemon.currentHp -= part9;
+        return defendingPokemon.currentHp <= 0;
     }
 
     private void killEnemyPokemon(){
@@ -174,9 +183,9 @@ public class PokemonBattleArea extends AppCompatActivity {
                 }
 
                 for (int i = 0; i < 6; i++) {
-                    int randomNum = ThreadLocalRandom.current().nextInt(0, 151);
+                    int randomNum = ThreadLocalRandom.current().nextInt(0, pokemons.size() -1 );
                     Pokemon pokemon = new Pokemon(pokemons.get(randomNum));
-                    pokemon.levelUpMultiple(averageUserPokemonLevel);// + ThreadLocalRandom.current().nextInt(0 , 5));
+                    pokemon.levelUpMultiple((int)(averageUserPokemonLevel * (Math.random() + 0.5)));// + ThreadLocalRandom.current().nextInt(0 , 5));
                     computerSelectedPokemon.add(pokemon);
                 }
                 initializeBattle();
