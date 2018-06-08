@@ -144,6 +144,7 @@ public class RegisterView extends AppCompatActivity {
         userRef.child("level").setValue(1);
         userRef.child("currentXp").setValue(0);
         userRef.child("nextLevelXp").setValue(100);
+        userRef.child("coins").setValue(25);
 
         giveUserPokemon();
     }
@@ -159,7 +160,9 @@ public class RegisterView extends AppCompatActivity {
                     for(DataSnapshot d : dataSnapshot.getChildren()){
                         Pokemon pokemon = d.getValue(Pokemon.class);
                         pokemon.key = d.getKey();
-                        pokemons.add(pokemon);
+                        if(pokemon != null) {
+                            pokemons.add(pokemon);
+                        }
                     }
 
                     Pokemon starterPokemon = new Pokemon(pokemons.get(starterPokemonNr));

@@ -6,6 +6,7 @@ public class User {
     public int level;
     public int currentXp;
     public int nextLevelXp;
+    public int coins;
 
 
     public void addXP(int amt){
@@ -21,6 +22,7 @@ public class User {
             level += 1;
             currentXp -= nextLevelXp;
             nextLevelXp = (int)(100 * (1 + (level * (1 + level * 0.25))));
+            coins += 100;
             levelup();
         }
     }

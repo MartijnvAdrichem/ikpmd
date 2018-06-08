@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -131,7 +132,6 @@ public class PokemonBattleArea extends AppCompatActivity {
 
     private boolean calculateMoveDamage(Pokemon attackingPokemon, Pokemon defendingPokemon, Move move){
 
-        int damage = (int)Math.floor(((((((2.0 * attackingPokemon.level) / 5.0) + 2.0) * move.power * (attackingPokemon.attack / defendingPokemon.defence)) / 50.0) +2.0));
         double part1 = 2.0 * attackingPokemon.level;
         double part2 = part1 / 5.0;
         double part3 = part2 + 2;
@@ -246,11 +246,7 @@ public class PokemonBattleArea extends AppCompatActivity {
 
 
         for (Pokemon pokemon : userSelectedPokemon) {
-            pokemon.moves.forEach((move) -> {
-                if(move == null){
-                    pokemon.moves.remove(move);
-                }
-            });
+            pokemon.moves.removeAll(Collections.singleton(null));
             pokemon.currentHp = pokemon.hp;
             if(pokemon.moves == null) {
                 continue;
@@ -264,11 +260,12 @@ public class PokemonBattleArea extends AppCompatActivity {
         }
 
         for (Pokemon pokemon : computerSelectedPokemon) {
+            pokemon.moves.removeAll(Collections.singleton(null));
             pokemon.moves.forEach((move) -> {
-                        if(move == null){
+                        if (move == null) {
                             pokemon.moves.remove(move);
                         }
-
+                    });
             pokemon.currentHp = pokemon.hp;
             if(pokemon.moves == null) {
                 continue;
@@ -288,10 +285,8 @@ public class PokemonBattleArea extends AppCompatActivity {
     }
 
     public void winGame(){
-        User user = HomeScreenView.user;
-        user.addXP(ThreadLocalRandom.current().nextInt(100, 150));
-        userRef = database.getReference("users/" + HomeScreenView.currentUser.getUid() + "/user");
-        userRef.push().setValue(HomeScreenView.user);
+        HomeScreenView.user.addXP(ThreadLocalRandom.current().nextInt(100, 150));
+        HomeScreenView.updateUser();
     }
 
     public void loseGame(){

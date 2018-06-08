@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginView" android:label="Log In">
+        <activity
+            android:name=".LoginView"
+            android:label="Log In">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +23,9 @@
         <activity android:name=".pokemon.PokemonList" />
         <activity android:name=".pokemon.PokemonDetailView" />
         <activity android:name=".pokemon.PokemonSelectBattleList" />
-        <activity android:name=".pokemon.PokemonBattleArea"></activity>
+        <activity android:name=".pokemon.PokemonBattleArea" />
+        <activity android:name=".shop.ShopView" />
+        <activity android:name=".shop.BuyEggView"></activity>
     </application>
 
 </manifest>
