@@ -296,7 +296,7 @@ public class PokemonBattleArea extends AppCompatActivity {
     public void updateUI(){
         moveAdapter.notifyDataSetChanged();
 
-        enemyHitpoints.setText(enemyFightingPokemon.hp + "");
+        enemyHitpoints.setText(enemyFightingPokemon.currentHp + "");
         enemyHpbar.setMax(enemyFightingPokemon.hp);
         enemyHpbar.setProgress(enemyFightingPokemon.currentHp);
         enemyName.setText(enemyFightingPokemon.identifier);
@@ -310,7 +310,7 @@ public class PokemonBattleArea extends AppCompatActivity {
             ex.printStackTrace();
         }
 
-        pokemonHitpoints.setText(userFightingPokemon.hp + "");
+        pokemonHitpoints.setText(userFightingPokemon.currentHp + "");
         pokemonName.setText(userFightingPokemon.identifier);
         pokemonHpbar.setMax(userFightingPokemon.hp);
         pokemonHpbar.setProgress(userFightingPokemon.currentHp);
