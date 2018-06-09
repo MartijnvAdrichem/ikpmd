@@ -9,23 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginView" android:label="Log In">
+        <activity
+            android:name=".LoginView"
+            android:label="Log In">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".pokemon.PokemonDetailView" android:label="My Pokémon" />
         <activity android:name=".RegisterView" android:label="Register" />
         <activity android:name=".HomeScreenView"  android:label="Home"/>
         <activity android:name=".pokemon.PokemonList" android:label="My Pokémon" />
-        <activity android:name=".pokemon.PokemonDetailView" android:label="My Pokémon" />
-        <activity android:name=".pokemon.PokemonSelectBattleList" android:label="Prepare for Battle!" />
         <activity android:name=".pokemon.PokemonBattleArea" android:label="BATTLE!!"/>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+        <activity android:name=".pokemon.PokemonSelectBattleList" android:label="Prepare for Battle!" />
+        <activity android:name=".shop.ShopView" />
+        <activity android:name=".shop.BuyEggView"></activity>
     </application>
 
 </manifest>

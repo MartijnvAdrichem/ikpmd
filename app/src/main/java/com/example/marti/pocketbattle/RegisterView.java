@@ -137,10 +137,14 @@ public class RegisterView extends AppCompatActivity {
 
     public void getReferences(){
         user = mAuth.getCurrentUser();
-        userRef = database.getReference("users/" + user.getUid());
+        userRef = database.getReference("users/" + user.getUid() + "/user");
         pokemonRef = database.getReference("users/" + user.getUid() + "/pokemon/");
 
-        userRef.child("Username").setValue(username.getText().toString());
+        userRef.child("username").setValue(username.getText().toString());
+        userRef.child("level").setValue(1);
+        userRef.child("currentXp").setValue(0);
+        userRef.child("nextLevelXp").setValue(100);
+        userRef.child("coins").setValue(25);
 
         giveUserPokemon();
     }
@@ -156,7 +160,9 @@ public class RegisterView extends AppCompatActivity {
                     for(DataSnapshot d : dataSnapshot.getChildren()){
                         Pokemon pokemon = d.getValue(Pokemon.class);
                         pokemon.key = d.getKey();
-                        pokemons.add(pokemon);
+                        if(pokemon != null) {
+                            pokemons.add(pokemon);
+                        }
                     }
 
                     Pokemon starterPokemon = new Pokemon(pokemons.get(starterPokemonNr));
@@ -177,6 +183,7 @@ public class RegisterView extends AppCompatActivity {
                     pokemon.xpForNextLevel = pokemon.base_experience;
                     //pokemon.addExperience(ThreadLocalRandom.current().nextInt(0, 50000));
                     pokemon.levelup(true);
+                    pokemon.levelUpMultiple(200);
                     pokemonRef.push().setValue(pokemon);
                 }
 

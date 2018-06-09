@@ -43,7 +43,9 @@ public class MoveAdapter extends ArrayAdapter<Move> {
         }
 
         Move move = getItem(position);
-
+        if(move == null){
+            return convertView;
+        }
         vh.moveName.setText((CharSequence) move.identifier);
         vh.moveAccuracy.setText(move.accuracy + "");
         vh.movePower.setText(move.power + "");

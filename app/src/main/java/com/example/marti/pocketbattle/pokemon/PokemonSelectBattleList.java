@@ -49,7 +49,7 @@ public class PokemonSelectBattleList extends AppCompatActivity {
         selectedPokemon = new ArrayList<>();
 
         goBattleButton.setOnClickListener(e -> {
-            if(this.selectedPokemon.size() < 6){
+            if(this.selectedPokemon.size() < 6 || this.selectedPokemon.size() > 6){
                 Toast.makeText(PokemonSelectBattleList.this, "You need to select 6 pokemon", Toast.LENGTH_SHORT).show();
             } else {
                 Intent intent = new Intent(PokemonSelectBattleList.this, PokemonBattleArea.class);

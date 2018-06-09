@@ -7,8 +7,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.marti.pocketbattle.models.User;
 import com.example.marti.pocketbattle.pokemon.PokemonList;
 import com.example.marti.pocketbattle.pokemon.PokemonSelectBattleList;
+import com.example.marti.pocketbattle.shop.ShopView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,8 +29,10 @@ public class HomeScreenView extends AppCompatActivity {
     ImageButton listViewButton;
     ImageButton battleButton;
     Button logoutButton;
+    ImageButton profileButton;
 
     DatabaseReference userRef;
+    public static User user;
     FirebaseDatabase db;
 
     @Override
@@ -40,7 +44,7 @@ public class HomeScreenView extends AppCompatActivity {
         listViewButton = findViewById(R.id.pokemonButton);
         battleButton = findViewById(R.id.battleButton);
         logoutButton = findViewById(R.id.logoutButton);
-
+        profileButton = findViewById(R.id.profileButton);
         currentUser = mAuth.getCurrentUser();
         battleButton = findViewById(R.id.battleButton);
 
@@ -50,13 +54,17 @@ public class HomeScreenView extends AppCompatActivity {
 
     public void onStart() {
         super.onStart();
+        currentUser = mAuth.getCurrentUser();
 
         if (currentUser != null) {
 
-         userRef.child("Username").addValueEventListener(new ValueEventListener() {
+         userRef.addValueEventListener(new ValueEventListener() {
              @Override
              public void onDataChange(DataSnapshot dataSnapshot) {
-                 hsText.setText("Welcome, "+ dataSnapshot.getValue().toString());
+                 for(DataSnapshot d : dataSnapshot.getChildren()){
+                      user = d.getValue(User.class);
+                 }
+                 hsText.setText("Welcome, "+ user.username);
              }
 
              @Override
@@ -80,5 +88,16 @@ public class HomeScreenView extends AppCompatActivity {
             mAuth.signOut();
             startActivity(new Intent(HomeScreenView.this, LoginView.class));
         });
+
+        profileButton.setOnClickListener(e ->{
+            startActivity(new Intent(HomeScreenView.this, ShopView.class));
+        });
+    }
+
+    public static void updateUser(){
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference userRef = db.getReference("users/" + HomeScreenView.currentUser.getUid() + "/user");
+        userRef.removeValue();
+        userRef.setValue(HomeScreenView.user);
     }
 }
