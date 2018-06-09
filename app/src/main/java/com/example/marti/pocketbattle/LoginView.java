@@ -57,8 +57,6 @@ public class LoginView extends AppCompatActivity {
 
         if(currentUser != null){
             startActivity(new Intent(LoginView.this, HomeScreenView.class));
-        } else {
-
         }
     }
 

@@ -44,7 +44,7 @@
         android:layout_marginBottom="11dp"
         android:layout_marginEnd="16dp"
         android:text="999/999"
-        app:layout_constraintBottom_toTopOf="@+id/textView23"
+        app:layout_constraintBottom_toTopOf="@+id/textview_messages"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -76,7 +76,7 @@
         android:layout_marginBottom="11dp"
         android:layout_marginEnd="33dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView23"
+        app:layout_constraintBottom_toTopOf="@+id/textview_messages"
         app:layout_constraintEnd_toStartOf="@+id/textView19"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/ic_launcher_round" />
@@ -159,13 +159,12 @@
         app:layout_constraintTop_toBottomOf="@+id/enemy_name" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/textview_messages"
         android:layout_width="328dp"
         android:layout_height="46dp"
         android:layout_marginBottom="170dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -179,7 +178,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23"
+        app:layout_constraintTop_toBottomOf="@+id/textview_messages"
         app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

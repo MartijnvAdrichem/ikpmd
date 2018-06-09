@@ -54,6 +54,7 @@ public class HomeScreenView extends AppCompatActivity {
 
     public void onStart() {
         super.onStart();
+        currentUser = mAuth.getCurrentUser();
 
         if (currentUser != null) {
 

@@ -1,10 +1,18 @@
 package com.example.marti.pocketbattle.pokemon;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.ScaleDrawable;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,6 +26,8 @@ import com.example.marti.pocketbattle.RegisterView;
 import com.example.marti.pocketbattle.models.Move;
 import com.example.marti.pocketbattle.models.Pokemon;
 import com.example.marti.pocketbattle.models.User;
+import com.example.marti.pocketbattle.shop.BuyEggView;
+import com.example.marti.pocketbattle.shop.ShopView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,6 +67,8 @@ public class PokemonBattleArea extends AppCompatActivity {
     private ListView moveList;
     private MoveAdapter moveAdapter;
 
+    private TextView textviewMssages;
+
     private DatabaseReference userRef;
     FirebaseDatabase database;
 
@@ -78,6 +90,13 @@ public class PokemonBattleArea extends AppCompatActivity {
         pokemonName = findViewById(R.id.pokemon_name);
         pokemonImageView = findViewById(R.id.pokemon_image);
         pokemonLevel = findViewById(R.id.pokemon_level);
+        textviewMssages = findViewById(R.id.textview_messages);
+        pokemonHpbar.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+        enemyHpbar.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+
+
+
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
@@ -110,60 +129,129 @@ public class PokemonBattleArea extends AppCompatActivity {
     }
     private void userAttack(Move move){
         if(userFightingPokemon.level > enemyFightingPokemon.level) {
-          if(calculateMoveDamage(userFightingPokemon, enemyFightingPokemon, move)) {
-              killEnemyPokemon();
-          } else {
-              if(calculateMoveDamage(enemyFightingPokemon, userFightingPokemon, enemyFightingPokemon.moves.get(ThreadLocalRandom.current().nextInt(0, enemyFightingPokemon.moves.size())))){
-                  killUserPokemon();
-              }
-          }
+          calculateMoveDamage(false, true, userFightingPokemon, enemyFightingPokemon, move);
         } else {
-            if(calculateMoveDamage(enemyFightingPokemon, userFightingPokemon, enemyFightingPokemon.moves.get(ThreadLocalRandom.current().nextInt(0, enemyFightingPokemon.moves.size())))) {
-                killUserPokemon();
-            } else {
-                if(calculateMoveDamage(userFightingPokemon, enemyFightingPokemon, move)){
-                    killEnemyPokemon();
+            calculateMoveDamage(true, true, enemyFightingPokemon, userFightingPokemon, enemyFightingPokemon.moves.get(ThreadLocalRandom.current().nextInt(0, enemyFightingPokemon.moves.size())));
                 }
+    }
+
+
+    private void calculateMoveDamage(boolean isEnemy, boolean attackBack,  Pokemon attackingPokemon, Pokemon defendingPokemon, Move move){
+        moveList.setEnabled(false);
+        moveList.setVisibility(View.INVISIBLE);
+        int accuracy = move.accuracy;
+        int randomNumber = ThreadLocalRandom.current().nextInt(1, 101);
+         int damage = 0;
+        if(randomNumber < accuracy) {
+            double part1 = 2.0 * attackingPokemon.level;
+            double part2 = part1 / 5.0;
+            double part3 = part2 + 2;
+            double part4 = part3 * move.power;
+            double part5 = (attackingPokemon.attack + 0.0) / (defendingPokemon.defence + 0.0);
+            double part6 = part4 * part5;
+            double part7 = part6 / 50;
+            double part8 = part7 + 2;
+            int part9 = (int) part7;
+            if (part9 > defendingPokemon.currentHp) {
+                damage = defendingPokemon.currentHp;
+             } else{
+                damage = part9;
             }
 
+        } else {
+            damage = 0;
         }
+        final int finaldamage = damage;
+
+        textviewMssages.setText(attackingPokemon.identifier + " used " + move.identifier + (finaldamage > 0 ?(" and did " + finaldamage + " damage.") : ", but missed."));
+        final Animation animScale = AnimationUtils.loadAnimation(this, R.anim.pokemonattack);
+        final Animation enemyAttack = AnimationUtils.loadAnimation(this, R.anim.enemypokemonattack);
+        final Animation enemydefence = AnimationUtils.loadAnimation(this, R.anim.enemypokemondefence);
+        final Animation animdefence = AnimationUtils.loadAnimation(this, R.anim.pokemondefence);
+
+        if(isEnemy){
+            pokemonImageView.startAnimation(enemydefence);
+            enemyImageView.startAnimation(animScale);
+            pokemonImageView.setColorFilter(Color.argb(120, 242, 0, 0));
+            ProgressBarAnimation anim = new ProgressBarAnimation(pokemonHpbar, defendingPokemon.currentHp, defendingPokemon.currentHp - damage);
+                anim.setDuration(1000);
+                pokemonHpbar.startAnimation(anim);
+            } else {
+            enemyImageView.startAnimation(animdefence);
+            pokemonImageView.startAnimation(enemyAttack);
+            enemyImageView.setColorFilter(Color.argb(120, 242, 0, 0));
+
+            ProgressBarAnimation anim = new ProgressBarAnimation(enemyHpbar, defendingPokemon.currentHp, defendingPokemon.currentHp - damage);
+                anim.setDuration(1000);
+                enemyHpbar.startAnimation(anim);
+            }
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                pokemonImageView.setColorFilter(Color.argb(0, 0, 0, 0));
+                enemyImageView.setColorFilter(Color.argb(0, 0, 0, 0));
+
+                defendingPokemon.currentHp -= finaldamage;
+                if(defendingPokemon.currentHp <= 0) {
+                    moveList.setEnabled(true);
+                    moveList.setVisibility(View.VISIBLE);
+                    if(isEnemy) {
+                        killUserPokemon();
+                    } else {
+                        killEnemyPokemon();
+                    }
+                } else if(attackBack) {
+                    if(isEnemy){
+                        calculateMoveDamage(false, false, userFightingPokemon, enemyFightingPokemon, move);
+                    } else {
+                        calculateMoveDamage(true, false, enemyFightingPokemon, userFightingPokemon, enemyFightingPokemon.moves.get(ThreadLocalRandom.current().nextInt(0, enemyFightingPokemon.moves.size())));
+
+                    }
+                }
+                updateUI();
+                if(!attackBack) {
+                    moveList.setEnabled(true);
+                    moveList.setVisibility(View.VISIBLE);
+                }
+            }
+        }, 2500);
+
+
+
+
     }
 
-
-    private boolean calculateMoveDamage(Pokemon attackingPokemon, Pokemon defendingPokemon, Move move){
-
-        double part1 = 2.0 * attackingPokemon.level;
-        double part2 = part1 / 5.0;
-        double part3 = part2 + 2;
-        double part4 = part3 * move.power;
-        double part5 = (attackingPokemon.attack + 0.0) / (defendingPokemon.defence + 0.0);
-        double part6 = part4 * part5;
-        double part7 = part6 / 50;
-        double part8 = part7 + 2;
-        int part9 =  (int) part7;
-        defendingPokemon.currentHp -= part9;
-        return defendingPokemon.currentHp <= 0;
-    }
 
     private void killEnemyPokemon(){
+        textviewMssages.setText(enemyFightingPokemon.identifier + " fainted.");
         enemyFightingPos++;
-        if(enemyFightingPos == 6){
+        if(enemyFightingPos >= 6){
             winGame();
             return;
         }
         enemyFightingPokemon = computerSelectedPokemon.get(enemyFightingPos);
+        enemyHpbar.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+        enemyHpbar.setProgress(userFightingPokemon.currentHp);
+        enemyHpbar.setMax(userFightingPokemon.hp);
         updateUI();
     }
 
     private void killUserPokemon(){
+        textviewMssages.setText(userFightingPokemon.identifier + " fainted.");
         userFightingPos++;
-        if(userFightingPos == 6){
+        if(userFightingPos >= 6){
             winGame();
             return;
         }
         userFightingPokemon = userSelectedPokemon.get(userFightingPos);
         moveAdapter = new MoveAdapter(PokemonBattleArea.this,  0, userFightingPokemon.moves);
         moveList.setAdapter(moveAdapter);
+        pokemonHpbar.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+        pokemonHpbar.setProgress(userFightingPokemon.currentHp);
+        pokemonHpbar.setMax(userFightingPokemon.hp);
         updateUI();
     }
     private void getRandomPokemonAI(int difficulty){
@@ -223,9 +311,9 @@ public class PokemonBattleArea extends AppCompatActivity {
         }
 
         pokemonHitpoints.setText(userFightingPokemon.hp + "");
+        pokemonName.setText(userFightingPokemon.identifier);
         pokemonHpbar.setMax(userFightingPokemon.hp);
         pokemonHpbar.setProgress(userFightingPokemon.currentHp);
-        pokemonName.setText(userFightingPokemon.identifier);
         pokemonLevel.setText(userFightingPokemon.level + "");
 
         try {

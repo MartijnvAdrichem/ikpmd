@@ -173,6 +173,7 @@ public class RegisterView extends AppCompatActivity {
                     for (int i = 0; i < 5; i++) {
                         int randomNum = ThreadLocalRandom.current().nextInt(9, 50);
                         Pokemon pokemon = new Pokemon(pokemons.get(randomNum));
+                        pokemon.levelUpMultiple(200);
                         addPokemonToDatabase(pokemon);
 
                     }
