@@ -16,6 +16,10 @@ public class User {
         }
     }
 
+    User(){
+
+    }
+
     public void levelup(){
 
         if(currentXp >= nextLevelXp){

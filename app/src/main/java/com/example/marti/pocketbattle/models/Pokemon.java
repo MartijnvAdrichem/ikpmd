@@ -79,7 +79,7 @@ public class Pokemon implements Serializable{
 
         level++;
         beginXpLevel = xpForNextLevel;
-        xpForNextLevel += (int)(base_experience * (1.0 + (0.25 * level)));
+        xpForNextLevel += (int)(base_experience * (1.0 + (0.35 * level)));
         if(cheatXp){
             experience = beginXpLevel;
         }

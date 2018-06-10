@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pokemon.EndBattleView">
+
+    <ImageView
+        android:id="@+id/levelup_pokemon_image4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="17dp"
+        app:layout_constraintEnd_toStartOf="@+id/levelup_pokemon_oldlevel6"
+        app:layout_constraintTop_toBottomOf="@+id/textview_levelup"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text=" --> "
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/levelup_pokemon_newLevel6"
+        app:layout_constraintTop_toBottomOf="@+id/textview_levelup" />
+
+    <TextView
+        android:id="@+id/levelup_pokemon_oldlevel6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="30dp"
+        android:text="999"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView32"
+        app:layout_constraintTop_toBottomOf="@+id/textview_levelup" />
+
+    <TextView
+        android:id="@+id/levelup_pokemon_newLevel6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="38dp"
+        android:layout_marginTop="68dp"
+        android:text="999"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_next_level" />
+
+    <ImageView
+        android:id="@+id/levelup_pokemon_image5"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintEnd_toStartOf="@+id/levelup_pokemon_oldlevel7"
+        app:layout_constraintTop_toBottomOf="@+id/levelup_pokemon_image4"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text=" --> "
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/levelup_pokemon_newLevel7"
+        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+    <TextView
+        android:id="@+id/levelup_pokemon_oldlevel7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="20dp"
+        android:text="999"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView33"
+        app:layout_constraintTop_toBottomOf="@+id/levelup_pokemon_oldlevel6" />
+
+    <TextView
+        android:id="@+id/levelup_pokemon_newLevel7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="38dp"
+        android:layout_marginTop="20dp"
+        android:text="999"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/levelup_pokemon_newLevel6" />
+
+    <ImageView
+        android:id="@+id/levelup_pokemon_image6"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/levelup_pokemon_oldlevel8"
+        app:layout_constraintTop_toBottomOf="@+id/levelup_pokemon_image5"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:text=" --> "
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/levelup_pokemon_newLevel8"
+        app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+    <TextView
+        android:id="@+id/levelup_pokemon_oldlevel8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="22dp"
+        android:text="999"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView34"
+        app:layout_constraintTop_toBottomOf="@+id/levelup_pokemon_oldlevel7" />
+
+    <TextView
+        android:id="@+id/levelup_pokemon_newLevel8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="38dp"
+        android:layout_marginTop="22dp"
+        android:text="999"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/levelup_pokemon_newLevel7" />
+
+    <ImageView
+        android:id="@+id/levelup_pokemon_image3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/levelup_pokemon_oldlevel5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/levelup_pokemon_image2"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="22dp"
+        android:text=" --> "
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/levelup_pokemon_oldlevel5"
+        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+    <TextView
+        android:id="@+id/levelup_pokemon_oldlevel5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="22dp"
+        android:text="999"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/levelup_pokemon_image3"
+        app:layout_constraintTop_toBottomOf="@+id/levelup_pokemon_oldlevel4" />
+
+    <TextView
+        android:id="@+id/levelup_pokemon_newLevel5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:text="999"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textView31"
+        app:layout_constraintTop_toBottomOf="@+id/levelup_pokemon_newLevel4" />
+
+    <ImageView
+        android:id="@+id/levelup_pokemon_image2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="9dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/levelup_pokemon_image3"
+        app:layout_constraintEnd_toStartOf="@+id/levelup_pokemon_oldlevel4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/levelup_pokemon_image"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="20dp"
+        android:text=" --> "
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/levelup_pokemon_oldlevel4"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+    <TextView
+        android:id="@+id/levelup_pokemon_oldlevel4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="20dp"
+        android:text="999"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/levelup_pokemon_image2"
+        app:layout_constraintTop_toBottomOf="@+id/levelup_pokemon_oldlevel" />
+
+    <TextView
+        android:id="@+id/levelup_pokemon_newLevel4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="23dp"
+        android:layout_marginTop="20dp"
+        android:text="999"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/levelup_pokemon_newLevel5"
+        app:layout_constraintStart_toEndOf="@+id/textView30"
+        app:layout_constraintTop_toBottomOf="@+id/levelup_pokemon_newLevel"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <TextView
+        android:id="@+id/textView_xp"
+        android:layout_width="54dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="119dp"
+        android:layout_marginTop="44dp"
+        android:text="999"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_xp2"
+        app:layout_constraintStart_toEndOf="@+id/textview_coins"
+        app:layout_constraintTop_toBottomOf="@+id/textview_wonlose" />
+
+    <TextView
+        android:id="@+id/textView_xp2"
+        android:layout_width="26dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="44dp"
+        android:text="xp"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView_xp"
+        app:layout_constraintTop_toBottomOf="@+id/textview_wonlose" />
+
+    <TextView
+        android:id="@+id/textview_coind4"
+        android:layout_width="68dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:text="coins"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/textview_coins"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_wonlose" />
+
+    <TextView
+        android:id="@+id/textview_wonlose"
+        android:layout_width="334dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:text="You Won!"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_coins"
+        android:layout_width="61dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="44dp"
+        android:text="999"
+        android:textAlignment="textStart"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textview_coind4"
+        app:layout_constraintTop_toBottomOf="@+id/textview_wonlose" />
+
+    <ProgressBar
+        android:id="@+id/userXpProgess"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="334dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_xp" />
+
+    <TextView
+        android:id="@+id/textview_next_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lv 10"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userXpProgess" />
+
+    <TextView
+        android:id="@+id/textview_current_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="lv 9"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userXpProgess" />
+
+    <TextView
+        android:id="@+id/textview_levelup"
+        android:layout_width="216dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="27dp"
+        android:text="Levelup!"
+        android:textAlignment="center"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userXpProgess" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="323dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginStart="18dp"
+        android:onClick="goToHome"
+        android:text="Back to home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/levelup_pokemon_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="55dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_current_level"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text=" --> "
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/levelup_pokemon_oldlevel"
+        app:layout_constraintTop_toBottomOf="@+id/textview_levelup" />
+
+    <TextView
+        android:id="@+id/levelup_pokemon_newLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="999"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textView25"
+        app:layout_constraintTop_toBottomOf="@+id/textview_levelup" />
+
+    <TextView
+        android:id="@+id/levelup_pokemon_oldlevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="999"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/levelup_pokemon_image"
+        app:layout_constraintTop_toBottomOf="@+id/textview_levelup" />
+
+</android.support.constraint.ConstraintLayout>

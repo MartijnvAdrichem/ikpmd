@@ -46,6 +46,7 @@ public class PokemonBattleArea extends AppCompatActivity {
 
     private List<Pokemon> userSelectedPokemon;
     private List<Pokemon> computerSelectedPokemon;
+    private ArrayList<Integer> addExperiencesToPokemon = new ArrayList<>();
 
     Pokemon enemyFightingPokemon;
     int enemyFightingPos = 0;
@@ -72,6 +73,8 @@ public class PokemonBattleArea extends AppCompatActivity {
     private DatabaseReference userRef;
     FirebaseDatabase database;
 
+    int difficulty = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,7 +97,12 @@ public class PokemonBattleArea extends AppCompatActivity {
         pokemonHpbar.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
         enemyHpbar.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
 
-
+        addExperiencesToPokemon.add(0);
+        addExperiencesToPokemon.add(0);
+        addExperiencesToPokemon.add(0);
+        addExperiencesToPokemon.add(0);
+        addExperiencesToPokemon.add(0);
+        addExperiencesToPokemon.add(0);
 
 
 
@@ -129,14 +137,14 @@ public class PokemonBattleArea extends AppCompatActivity {
     }
     private void userAttack(Move move){
         if(userFightingPokemon.level > enemyFightingPokemon.level) {
-          calculateMoveDamage(false, true, userFightingPokemon, enemyFightingPokemon, move);
+          calculateMoveDamage(false, true, userFightingPokemon, enemyFightingPokemon, move, move);
         } else {
-            calculateMoveDamage(true, true, enemyFightingPokemon, userFightingPokemon, enemyFightingPokemon.moves.get(ThreadLocalRandom.current().nextInt(0, enemyFightingPokemon.moves.size())));
+            calculateMoveDamage(true, true, enemyFightingPokemon, userFightingPokemon, enemyFightingPokemon.moves.get(ThreadLocalRandom.current().nextInt(0, enemyFightingPokemon.moves.size())), move);
                 }
     }
 
 
-    private void calculateMoveDamage(boolean isEnemy, boolean attackBack,  Pokemon attackingPokemon, Pokemon defendingPokemon, Move move){
+    private void calculateMoveDamage(boolean isEnemy, boolean attackBack,  Pokemon attackingPokemon, Pokemon defendingPokemon, Move move, Move userMove){
         moveList.setEnabled(false);
         moveList.setVisibility(View.INVISIBLE);
         int accuracy = move.accuracy;
@@ -205,9 +213,9 @@ public class PokemonBattleArea extends AppCompatActivity {
                     }
                 } else if(attackBack) {
                     if(isEnemy){
-                        calculateMoveDamage(false, false, userFightingPokemon, enemyFightingPokemon, move);
+                        calculateMoveDamage(false, false, userFightingPokemon, enemyFightingPokemon, userMove, userMove);
                     } else {
-                        calculateMoveDamage(true, false, enemyFightingPokemon, userFightingPokemon, enemyFightingPokemon.moves.get(ThreadLocalRandom.current().nextInt(0, enemyFightingPokemon.moves.size())));
+                        calculateMoveDamage(true, false, enemyFightingPokemon, userFightingPokemon, enemyFightingPokemon.moves.get(ThreadLocalRandom.current().nextInt(0, enemyFightingPokemon.moves.size())), userMove);
 
                     }
                 }
@@ -223,7 +231,10 @@ public class PokemonBattleArea extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed() {
 
+    }
 
     private void killEnemyPokemon(){
         textviewMssages.setText(enemyFightingPokemon.identifier + " fainted.");
@@ -232,6 +243,15 @@ public class PokemonBattleArea extends AppCompatActivity {
             winGame();
             return;
         }
+
+        int xp = 50 + enemyFightingPokemon.hp / 5 + (enemyFightingPokemon.level - userFightingPokemon.level) * 2 ;
+        if(xp < 0){
+            xp = 0;
+        }
+
+        addExperiencesToPokemon.set(userFightingPos, addExperiencesToPokemon.get(userFightingPos) + xp);
+
+
         enemyFightingPokemon = computerSelectedPokemon.get(enemyFightingPos);
         enemyHpbar.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
         enemyHpbar.setProgress(userFightingPokemon.currentHp);
@@ -243,7 +263,7 @@ public class PokemonBattleArea extends AppCompatActivity {
         textviewMssages.setText(userFightingPokemon.identifier + " fainted.");
         userFightingPos++;
         if(userFightingPos >= 6){
-            winGame();
+            loseGame();
             return;
         }
         userFightingPokemon = userSelectedPokemon.get(userFightingPos);
@@ -373,11 +393,44 @@ public class PokemonBattleArea extends AppCompatActivity {
     }
 
     public void winGame(){
-        HomeScreenView.user.addXP(ThreadLocalRandom.current().nextInt(100, 150));
-        HomeScreenView.updateUser();
+
+        Intent intent = new Intent(PokemonBattleArea.this, EndBattleView.class);
+        Bundle b = new Bundle();
+        int i = 0;
+        for (Pokemon pokemon:userSelectedPokemon) {
+            i++;
+            b.putSerializable(i + "", pokemon);
+        }
+
+        for (int j = 0; j < addExperiencesToPokemon.size(); j++) {
+            addExperiencesToPokemon.set(j, addExperiencesToPokemon.get(j) + 50 * difficulty);
+        }
+        b.putInt("coins", ThreadLocalRandom.current().nextInt(10 * difficulty, 50 + (20 * difficulty)));
+        b.putInt("xp", ThreadLocalRandom.current().nextInt(75 + 10 * difficulty, 125 + 25 * difficulty));
+        b.putBoolean("win", true);
+        b.putIntegerArrayList("xpGains", addExperiencesToPokemon);
+        intent.putExtras(b);
+        startActivity(intent);
+
+        //HomeScreenView.user.addXP(ThreadLocalRandom.current().nextInt(100, 150));
+        //HomeScreenView.updateUser();
     }
 
     public void loseGame(){
+
+        Intent intent = new Intent(PokemonBattleArea.this, EndBattleView.class);
+        Bundle b = new Bundle();
+        int i = 0;
+        for (Pokemon pokemon:userSelectedPokemon) {
+            i++;
+            b.putSerializable(i + "", pokemon);
+        }
+        b.putInt("coins", ThreadLocalRandom.current().nextInt(5 * difficulty, 15 + (5 * difficulty)));
+        b.putInt("xp", ThreadLocalRandom.current().nextInt(20 + 5 * difficulty, 30 + 5 * difficulty));
+        b.putBoolean("win", false);
+        b.putIntegerArrayList("xpGains", addExperiencesToPokemon);
+        intent.putExtras(b);
+        startActivity(intent);
 
     }
 }

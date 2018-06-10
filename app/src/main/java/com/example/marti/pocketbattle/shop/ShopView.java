@@ -109,7 +109,7 @@ public class ShopView extends AppCompatActivity {
 
             public void addPokemonToDatabase(Pokemon pokemon){
                 pokemon.xpForNextLevel = pokemon.base_experience;
-                //pokemon.addExperience(ThreadLocalRandom.current().nextInt(0, 50000));
+                pokemon.levelUpMultiple(ThreadLocalRandom.current().nextInt(HomeScreenView.user.level / 2, HomeScreenView.user.level));
                 pokemonRef.push().setValue(pokemon);
             }
 

@@ -159,8 +159,8 @@ public class RegisterView extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for(DataSnapshot d : dataSnapshot.getChildren()){
                         Pokemon pokemon = d.getValue(Pokemon.class);
-                        pokemon.key = d.getKey();
                         if(pokemon != null) {
+                            pokemon.key = d.getKey();
                             pokemons.add(pokemon);
                         }
                     }
@@ -182,8 +182,7 @@ public class RegisterView extends AppCompatActivity {
                 public void addPokemonToDatabase(Pokemon pokemon){
                     pokemon.xpForNextLevel = pokemon.base_experience;
                     //pokemon.addExperience(ThreadLocalRandom.current().nextInt(0, 50000));
-                    pokemon.levelup(true);
-                    pokemon.levelUpMultiple(200);
+                    // pokemon.levelUpMultiple(200);
                     pokemonRef.push().setValue(pokemon);
                 }
 

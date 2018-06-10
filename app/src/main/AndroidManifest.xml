@@ -18,14 +18,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pokemon.PokemonDetailView" android:label="My Pokémon" />
-        <activity android:name=".RegisterView" android:label="Register" />
-        <activity android:name=".HomeScreenView"  android:label="Home"/>
-        <activity android:name=".pokemon.PokemonList" android:label="My Pokémon" />
-        <activity android:name=".pokemon.PokemonBattleArea" android:label="BATTLE!!"/>
-        <activity android:name=".pokemon.PokemonSelectBattleList" android:label="Prepare for Battle!" />
+        <activity
+            android:name=".pokemon.PokemonDetailView"
+            android:label="My Pokémon" />
+        <activity
+            android:name=".RegisterView"
+            android:label="Register" />
+        <activity
+            android:name=".HomeScreenView"
+            android:label="Home" />
+        <activity
+            android:name=".pokemon.PokemonList"
+            android:label="My Pokémon" />
+        <activity
+            android:name=".pokemon.PokemonBattleArea"
+            android:label="BATTLE!!" />
+        <activity
+            android:name=".pokemon.PokemonSelectBattleList"
+            android:label="Prepare for Battle!" />
         <activity android:name=".shop.ShopView" />
-        <activity android:name=".shop.BuyEggView"></activity>
+        <activity android:name=".shop.BuyEggView" />
+        <activity android:name=".pokemon.EndBattleView"></activity>
     </application>
 
 </manifest>
