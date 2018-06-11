@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.marti.pocketbattle.highscores.HighscoreView;
 import com.example.marti.pocketbattle.models.User;
 import com.example.marti.pocketbattle.pokemon.PokemonList;
 import com.example.marti.pocketbattle.pokemon.PokemonSelectBattleList;
@@ -19,8 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 public class HomeScreenView extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -30,6 +29,7 @@ public class HomeScreenView extends AppCompatActivity {
     ImageButton battleButton;
     Button logoutButton;
     ImageButton profileButton;
+    ImageButton highscoreButton;
 
     DatabaseReference userRef;
     public static User user;
@@ -47,6 +47,8 @@ public class HomeScreenView extends AppCompatActivity {
         profileButton = findViewById(R.id.profileButton);
         currentUser = mAuth.getCurrentUser();
         battleButton = findViewById(R.id.battleButton);
+        highscoreButton = findViewById(R.id.highscoreButton);
+
 
         db = FirebaseDatabase.getInstance();
         userRef = db.getReference("users/" + currentUser.getUid());
@@ -64,7 +66,7 @@ public class HomeScreenView extends AppCompatActivity {
                  for(DataSnapshot d : dataSnapshot.getChildren()){
                       user = d.getValue(User.class);
                  }
-                 hsText.setText("Welcome, "+ user.username);
+                 hsText.setText("Welcome, " + user.username);
              }
 
              @Override
@@ -91,6 +93,10 @@ public class HomeScreenView extends AppCompatActivity {
 
         profileButton.setOnClickListener(e ->{
             startActivity(new Intent(HomeScreenView.this, ShopView.class));
+        });
+
+        highscoreButton.setOnClickListener(e ->{
+            startActivity(new Intent(HomeScreenView.this, HighscoreView.class));
         });
     }
 
