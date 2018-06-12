@@ -51,7 +51,7 @@ public class ProfileView extends AppCompatActivity {
         username = findViewById(R.id.ProfileUsernameTV);
         level = findViewById(R.id.ProfileLevelTV);
         levelBar = findViewById(R.id.ProfileProgressBar);
-        pokemonButton = findViewById(R.id.ProfileShopBT);
+        pokemonButton = findViewById(R.id.MyPokemonBT);
         winsChartTV = findViewById(R.id.tvWinsChart);
         damageChartTV = findViewById(R.id.tvDamageChart);
 
