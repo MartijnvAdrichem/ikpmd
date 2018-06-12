@@ -114,8 +114,11 @@ public class PokemonBattleArea extends AppCompatActivity {
             userSelectedPokemon.add((Pokemon) b.getSerializable("4"));
             userSelectedPokemon.add((Pokemon) b.getSerializable("5"));
             userSelectedPokemon.add((Pokemon) b.getSerializable("6"));
+            difficulty = b.getInt("difficulty");
+
         }
-        getRandomPokemonAI(0);
+
+        getRandomPokemonAI(difficulty);
 
         moveList = (ListView) findViewById(R.id.move_list);
         moveList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -301,7 +304,7 @@ public class PokemonBattleArea extends AppCompatActivity {
                 for (int i = 0; i < 6; i++) {
                     int randomNum = ThreadLocalRandom.current().nextInt(0, pokemons.size() -1 );
                     Pokemon pokemon = new Pokemon(pokemons.get(randomNum));
-                    pokemon.levelUpMultiple((int)(averageUserPokemonLevel * (Math.random() + 0.5)));// + ThreadLocalRandom.current().nextInt(0 , 5));
+                    pokemon.levelUpMultiple((int)(averageUserPokemonLevel * (Math.random() + 0.2 * difficulty)));// + ThreadLocalRandom.current().nextInt(0 , 5));
                     computerSelectedPokemon.add(pokemon);
                 }
                 initializeBattle();

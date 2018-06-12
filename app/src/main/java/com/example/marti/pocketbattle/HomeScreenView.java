@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.marti.pocketbattle.highscores.HighscoreView;
 import com.example.marti.pocketbattle.models.User;
+import com.example.marti.pocketbattle.pokemon.DifficultySelectView;
 import com.example.marti.pocketbattle.pokemon.PokemonList;
 import com.example.marti.pocketbattle.pokemon.PokemonSelectBattleList;
 import com.example.marti.pocketbattle.shop.ShopView;
@@ -82,7 +83,7 @@ public class HomeScreenView extends AppCompatActivity {
         });
 
         battleButton.setOnClickListener(e -> {
-            startActivity(new Intent(HomeScreenView.this, PokemonSelectBattleList.class));
+            startActivity(new Intent(HomeScreenView.this, DifficultySelectView.class));
 
         });
 

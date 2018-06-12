@@ -38,6 +38,7 @@ public class PokemonSelectBattleList extends AppCompatActivity {
     private static PokemonFirebase pokemonFirebase;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
+    int difficulty = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,18 +49,24 @@ public class PokemonSelectBattleList extends AppCompatActivity {
         goBattleButton = findViewById(R.id.start_button);
         selectedPokemon = new ArrayList<>();
 
+        Bundle b = getIntent().getExtras();
+        if (b != null) {
+           difficulty =  b.getInt("difficulty");
+        }
+
         goBattleButton.setOnClickListener(e -> {
             if(this.selectedPokemon.size() < 6 || this.selectedPokemon.size() > 6){
                 Toast.makeText(PokemonSelectBattleList.this, "You need to select 6 pokemon", Toast.LENGTH_SHORT).show();
             } else {
                 Intent intent = new Intent(PokemonSelectBattleList.this, PokemonBattleArea.class);
-                Bundle b = new Bundle();
+                Bundle bb = new Bundle();
                 int i = 0;
                 for (Pokemon pokemon:selectedPokemon) {
                     i++;
-                    b.putSerializable(i + "", pokemon);
+                    bb.putSerializable(i + "", pokemon);
                 }
-                intent.putExtras(b);
+                bb.putInt("difficulty", difficulty);
+                intent.putExtras(bb);
                 startActivity(intent);
             }
         });
