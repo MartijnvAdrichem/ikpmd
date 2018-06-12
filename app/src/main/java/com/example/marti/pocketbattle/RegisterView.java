@@ -145,7 +145,10 @@ public class RegisterView extends AppCompatActivity {
         userRef.child("currentXp").setValue(0);
         userRef.child("nextLevelXp").setValue(100);
         userRef.child("coins").setValue(25);
-
+        userRef.child("wins").setValue(0);
+        userRef.child("loses").setValue(0);
+        userRef.child("damageDone").setValue(0);
+        userRef.child("damageTaken").setValue(0);
         giveUserPokemon();
     }
 

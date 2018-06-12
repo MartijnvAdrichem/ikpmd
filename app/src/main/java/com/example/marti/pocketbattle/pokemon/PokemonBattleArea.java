@@ -178,6 +178,7 @@ public class PokemonBattleArea extends AppCompatActivity {
         final Animation animdefence = AnimationUtils.loadAnimation(this, R.anim.pokemondefence);
 
         if(isEnemy){
+            HomeScreenView.user.damageTaken += finaldamage;
             pokemonImageView.startAnimation(enemydefence);
             enemyImageView.startAnimation(animScale);
             pokemonImageView.setColorFilter(Color.argb(120, 242, 0, 0));
@@ -185,6 +186,7 @@ public class PokemonBattleArea extends AppCompatActivity {
                 anim.setDuration(1000);
                 pokemonHpbar.startAnimation(anim);
             } else {
+            HomeScreenView.user.damageDone += finaldamage;
             enemyImageView.startAnimation(animdefence);
             pokemonImageView.startAnimation(enemyAttack);
             enemyImageView.setColorFilter(Color.argb(120, 242, 0, 0));
@@ -198,7 +200,6 @@ public class PokemonBattleArea extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 pokemonImageView.setColorFilter(Color.argb(0, 0, 0, 0));
                 enemyImageView.setColorFilter(Color.argb(0, 0, 0, 0));
 
@@ -394,6 +395,8 @@ public class PokemonBattleArea extends AppCompatActivity {
 
     public void winGame(){
 
+        HomeScreenView.user.addWin();
+
         Intent intent = new Intent(PokemonBattleArea.this, EndBattleView.class);
         Bundle b = new Bundle();
         int i = 0;
@@ -417,6 +420,8 @@ public class PokemonBattleArea extends AppCompatActivity {
     }
 
     public void loseGame(){
+
+        HomeScreenView.user.addLose();
 
         Intent intent = new Intent(PokemonBattleArea.this, EndBattleView.class);
         Bundle b = new Bundle();

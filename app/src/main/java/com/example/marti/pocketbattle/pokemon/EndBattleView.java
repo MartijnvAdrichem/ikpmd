@@ -160,13 +160,14 @@ public class EndBattleView extends AppCompatActivity {
 
         user.coins += coins;
         progressAnimation();
-        HomeScreenView.updateUser();
 
         for (Pokemon pokemon :pokemons) {
             DatabaseReference pokemonRef = database.getReference("users/" + HomeScreenView.currentUser.getUid() + "/pokemon/" + pokemon.key);
             pokemonRef.removeValue();
             pokemonRef.setValue(pokemon);
         }
+        HomeScreenView.updateUser();
+
     }
 
     public void progressAnimation(){
@@ -189,7 +190,8 @@ public class EndBattleView extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        user.addXP(xp);
+                        HomeScreenView.user.addXP(xp);
+                        HomeScreenView.updateUser();
                         xp = XPLEFT;
                         userXpProgress.setMax(user.nextLevelXp);
                         userXpProgress.setProgress(user.currentXp);
