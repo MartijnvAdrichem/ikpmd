@@ -36,8 +36,8 @@ public class HighscoreAdapter extends ArrayAdapter<User> {
 
         User user = getItem(position);
         vh.name.setText(user.username);
-        vh.level.setText(user.currentXp + "");
-        System.out.println("EXPRIENCE: " + user.currentXp + user.level + user.username);
+        vh.level.setText(user.level + "");
+
 
         return convertView;
     }

@@ -35,24 +35,28 @@ public class User implements Comparable<User> {
     }
 
     public String toString() {
-        return "[name: " + username + ", xp: " + currentXp + "]";
+        return "[name: " + username + ", lvl: " + level + "]";
     }
 
     @Override
     public int compareTo(User o) {
-        return Integer.valueOf(currentXp).compareTo(o.currentXp);
+        return Integer.valueOf(level).compareTo(o.level);
     }
 
     public int getCurrentXp() {
         return currentXp;
     }
 
+    public int getLevel(){
+        return level;
+    }
+
     public static Comparator<User> UsrSorting = (s1, s2) -> {
 
-        int xp1 = s1.getCurrentXp();
-        int xp2 = s2.getCurrentXp();
+        int levelUsr1 = s1.getLevel();
+        int levelUsr2 = s2.getLevel();
 
-        return xp2-xp1;
+        return levelUsr2-levelUsr1;
 
     };
 
