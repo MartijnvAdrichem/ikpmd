@@ -92,7 +92,7 @@ public class HomeScreenView extends AppCompatActivity {
         });
 
         profileButton.setOnClickListener(e ->{
-            startActivity(new Intent(HomeScreenView.this, ShopView.class));
+            startActivity(new Intent(HomeScreenView.this, ProfileView.class));
         });
 
         highscoreButton.setOnClickListener(e ->{
