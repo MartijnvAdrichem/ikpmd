@@ -304,7 +304,7 @@ public class PokemonBattleArea extends AppCompatActivity {
                 for (int i = 0; i < 6; i++) {
                     int randomNum = ThreadLocalRandom.current().nextInt(0, pokemons.size() -1 );
                     Pokemon pokemon = new Pokemon(pokemons.get(randomNum));
-                    pokemon.levelUpMultiple((int)(averageUserPokemonLevel * (Math.random() + 0.2 * difficulty)));// + ThreadLocalRandom.current().nextInt(0 , 5));
+                    pokemon.levelUpMultiple((int)((averageUserPokemonLevel + difficulty ) * (Math.random() + 0.2 * difficulty)));// + ThreadLocalRandom.current().nextInt(0 , 5));
                     computerSelectedPokemon.add(pokemon);
                 }
                 initializeBattle();
