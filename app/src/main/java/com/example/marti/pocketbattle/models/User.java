@@ -1,9 +1,12 @@
 package com.example.marti.pocketbattle.models;
 
-public class User {
+import java.util.Comparator;
+
+public class User implements Comparable<User> {
 
     public String username;
     public int level;
+
     public int currentXp;
     public int nextLevelXp;
     public int coins;
@@ -50,4 +53,28 @@ public class User {
             levelup();
         }
     }
+
+    public String toString() {
+        return "[name: " + username + ", lvl: " + level + "]";
+    }
+
+    @Override
+    public int compareTo(User o) {
+        return Integer.valueOf(level).compareTo(o.level);
+    }
+
+
+    public int getLevel(){
+        return level;
+    }
+
+    public static Comparator<User> UsrSorting = (s1, s2) -> {
+
+        int levelUsr1 = s1.getLevel();
+        int levelUsr2 = s2.getLevel();
+
+        return levelUsr2-levelUsr1;
+
+    };
+
 }

@@ -36,9 +36,14 @@
         <activity
             android:name=".pokemon.PokemonSelectBattleList"
             android:label="Prepare for Battle!" />
-        <activity android:name=".shop.ShopView" />
-        <activity android:name=".shop.BuyEggView" />
-        <activity android:name=".pokemon.EndBattleView"></activity>
+        <activity android:name=".shop.ShopView"
+            android:label="Shop"/>
+        <activity android:name=".shop.BuyEggView"
+            android:label="Buy an egg"/>
+        <activity android:name=".pokemon.EndBattleView"
+            android:label="End of battle"/>
+        <activity android:name=".highscores.HighscoreView"
+            android:label="Highscores"/>
     </application>
 
 </manifest>
