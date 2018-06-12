@@ -10,6 +10,10 @@ public class User implements Comparable<User> {
     public int currentXp;
     public int nextLevelXp;
     public int coins;
+    public int wins;
+    public int loses;
+    public int damageDone;
+    public int damageTaken;
 
 
     public void addXP(int amt){
@@ -17,6 +21,22 @@ public class User implements Comparable<User> {
         if(currentXp >= nextLevelXp){
             levelup();
         }
+    }
+
+    public void addWin(){
+        wins++;
+    }
+
+    public void addLose(){
+        loses++;
+    }
+
+    public void addDamageDone(int dmg){
+        damageDone += dmg;
+    }
+
+    public void addDamageTaken(int dmg){
+        damageTaken += dmg;
     }
 
     User(){
@@ -43,9 +63,6 @@ public class User implements Comparable<User> {
         return Integer.valueOf(level).compareTo(o.level);
     }
 
-    public int getCurrentXp() {
-        return currentXp;
-    }
 
     public int getLevel(){
         return level;
