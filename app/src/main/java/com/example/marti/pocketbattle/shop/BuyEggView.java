@@ -35,6 +35,16 @@ public class BuyEggView extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         if (b != null) {
             pokemon = (Pokemon) b.getSerializable("pokemon");
+            int eggid = b.getInt("eggimage");
+            if(eggid == 1){
+                imageView.setImageResource(R.drawable.smallegg);
+            } else if(eggid == 2){
+                imageView.setImageResource(R.drawable.mediumegg);
+            } else if(eggid == 3){
+                imageView.setImageResource(R.drawable.largeegg);
+            } else if(eggid == 4){
+                imageView.setImageResource(R.drawable.hugeegg);
+            }
         }
 
         Thread thread = new Thread() {

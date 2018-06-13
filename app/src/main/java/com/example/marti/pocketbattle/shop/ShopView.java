@@ -50,29 +50,29 @@ public class ShopView extends AppCompatActivity {
 
     public void buySmallEgg(View v){
         int[] validPokemon = {0, 3, 6};
-        giveUserPokemon(validPokemon, 150);
+        giveUserPokemon(validPokemon, 150, 1);
     }
 
     public void buyMediumEgg(View v){
         int[] validPokemon = {1, 4, 7};
-        giveUserPokemon(validPokemon, 400);
+        giveUserPokemon(validPokemon, 400, 2);
 
     }
 
     public void buyLargeEgg(View v){
         int[] validPokemon = {2, 5, 8};
-        giveUserPokemon(validPokemon, 1000);
+        giveUserPokemon(validPokemon, 1000, 3);
 
     }
 
     public void buyHugeEgg(View v){
         int[] validPokemon = {9};
-        giveUserPokemon(validPokemon, 2500);
+        giveUserPokemon(validPokemon, 2500, 4);
 
     }
 
 
-    public void giveUserPokemon(int[] validPokemon, int cost){
+    public void giveUserPokemon(int[] validPokemon, int cost, int eggnr){
         ArrayList<Pokemon> pokemons = new ArrayList<>();
 
         if(HomeScreenView.user.coins < cost) {
@@ -103,6 +103,7 @@ public class ShopView extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 Bundle b = new Bundle();
                 b.putSerializable("pokemon", pokemon);
+                b.putInt("eggimage",eggnr);
                 intent.putExtras(b);
                 startActivity(intent);
             }

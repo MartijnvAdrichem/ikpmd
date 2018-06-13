@@ -16,7 +16,7 @@
         android:onClick="buySmallEgg"
         android:text="Buy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/eggview1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1000 coins"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/eggview3"
         app:layout_constraintTop_toBottomOf="@+id/Bi" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="400 coins"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/eggview2"
         app:layout_constraintTop_toBottomOf="@+id/Medium_Egg" />
 
     <TextView
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="150 coins"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/eggview1"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
@@ -50,49 +50,49 @@
         android:layout_marginTop="16dp"
         android:text="Small Egg"
         android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/eggview1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/eggview4"
         android:layout_width="96dp"
         android:layout_height="119dp"
         android:layout_marginBottom="19dp"
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:srcCompat="@drawable/pokemonegg" />
+        app:layout_constraintTop_toBottomOf="@+id/eggview3"
+        app:srcCompat="@drawable/hugeegg" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/eggview3"
         android:layout_width="96dp"
         android:layout_height="119dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/eggview4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/pokemonegg" />
+        app:layout_constraintTop_toBottomOf="@+id/eggview2"
+        app:srcCompat="@drawable/largeegg" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/eggview2"
         android:layout_width="96dp"
         android:layout_height="119dp"
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/pokemonegg" />
+        app:layout_constraintTop_toBottomOf="@+id/eggview1"
+        app:srcCompat="@drawable/mediumegg" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/eggview1"
         android:layout_width="96dp"
         android:layout_height="119dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toTopOf="@+id/eggview2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pokemonegg" />
+        app:srcCompat="@drawable/smallegg" />
 
     <TextView
         android:id="@+id/Medium_Egg"
@@ -101,7 +101,7 @@
         android:layout_marginTop="66dp"
         android:text="Medium Egg"
         android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/eggview2"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <TextView
@@ -111,7 +111,7 @@
         android:layout_marginTop="67dp"
         android:text="Large Egg"
         android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/eggview3"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <TextView
@@ -121,7 +121,7 @@
         android:layout_marginTop="66dp"
         android:text="Huge Egg"
         android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/eggview4"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
@@ -130,7 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:text="2500 coins"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/eggview4"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <Button
@@ -143,7 +143,7 @@
         android:onClick="buyHugeEgg"
         android:text="Buy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/eggview4"
         app:layout_constraintTop_toBottomOf="@+id/button_buyLargeEgg" />
 
     <Button
@@ -156,7 +156,7 @@
         android:onClick="buyLargeEgg"
         android:text="Buy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/eggview3"
         app:layout_constraintTop_toBottomOf="@+id/button_buyMediumEgg" />
 
     <Button
@@ -169,7 +169,7 @@
         android:onClick="buyMediumEgg"
         android:text="Buy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/eggview2"
         app:layout_constraintTop_toBottomOf="@+id/button_buySmallEgg" />
 
     <TextView
