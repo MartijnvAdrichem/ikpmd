@@ -41,7 +41,7 @@
             android:label="Shop" />
         <activity
             android:name=".shop.BuyEggView"
-            android:label="Buy an egg" />
+            android:label="What will it be?" />
         <activity
             android:name=".pokemon.EndBattleView"
             android:label="End of battle" />

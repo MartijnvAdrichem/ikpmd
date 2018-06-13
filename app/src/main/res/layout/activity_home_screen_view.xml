@@ -96,6 +96,7 @@
         android:layout_marginStart="136dp"
         android:backgroundTint="@android:color/holo_red_dark"
         android:elevation="20dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Log Out"
         android:textColor="?attr/colorBackgroundFloating"
         app:layout_constraintBottom_toBottomOf="parent"

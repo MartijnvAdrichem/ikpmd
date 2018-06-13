@@ -68,6 +68,7 @@ public class HomeScreenView extends AppCompatActivity {
 
         if(HomeScreenView.mediaPlayer == null ) {
             HomeScreenView.mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.hometheme);
+            mediaPlayer.setLooping(true);
         }
         if(HomeScreenView.musicPlaying){
             if(HomeScreenView.musicPlaying) {

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/battleColor"
     tools:context=".pokemon.PokemonBattleArea">
 
     <ProgressBar
@@ -22,8 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="2dp"
         android:layout_marginStart="1dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="lv"
         android:textAlignment="textEnd"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/pokemon_hpbar"
         app:layout_constraintEnd_toStartOf="@+id/pokemon_level"
         app:layout_constraintStart_toEndOf="@+id/pokemon_name" />
@@ -33,7 +36,10 @@
         android:layout_width="wrap_content"
         android:layout_height="17dp"
         android:layout_marginStart="33dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="hp"
+        android:textAlignment="center"
+        android:textAllCaps="true"
         app:layout_constraintStart_toEndOf="@+id/pokemon_image"
         app:layout_constraintTop_toBottomOf="@+id/pokemon_name" />
 
@@ -43,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="11dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="999/999"
         app:layout_constraintBottom_toTopOf="@+id/textview_messages"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -52,7 +59,10 @@
         android:layout_width="142dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="33dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Pickacu"
+        android:textAlignment="textStart"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/pokemon_hpbar"
         app:layout_constraintEnd_toStartOf="@+id/textView18"
         app:layout_constraintStart_toEndOf="@+id/pokemon_image" />
@@ -63,6 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="2dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="999"
         android:textAlignment="textEnd"
         app:layout_constraintBottom_toTopOf="@+id/pokemon_hpbar"
@@ -107,8 +118,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:layout_marginTop="23dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="lv"
         android:textAlignment="textEnd"
+        android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/enemy_hpbar"
         app:layout_constraintEnd_toStartOf="@+id/enemy_level"
         app:layout_constraintStart_toEndOf="@+id/enemy_name"
@@ -120,6 +133,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="21dp"
         android:layout_marginTop="23dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="999"
         android:textAlignment="textEnd"
         app:layout_constraintBottom_toTopOf="@+id/enemy_hpbar"
@@ -133,7 +147,10 @@
         android:layout_marginEnd="3dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="23dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Pickacu"
+        android:textAlignment="textStart"
+        android:textAllCaps="true"
         app:layout_constraintEnd_toStartOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -144,6 +161,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="21dp"
         android:layout_marginStart="171dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="999/999"
         app:layout_constraintEnd_toStartOf="@+id/enemy_image"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,7 +172,9 @@
         android:layout_width="wrap_content"
         android:layout_height="17dp"
         android:layout_marginStart="28dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="hp"
+        android:textAllCaps="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enemy_name" />
 
@@ -165,6 +185,12 @@
         android:layout_marginBottom="170dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="CHOOSE YOUR ATTACK"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -175,6 +201,7 @@
         android:layout_height="158dp"
         android:layout_marginBottom="4dp"
         android:layout_marginTop="8dp"
+        android:background="@color/HomeBackgroundColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -191,5 +218,23 @@
         android:text="flee"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enemy_hpbar" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationZ="-1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enemy_hpbar"
+        app:srcCompat="@drawable/battlearenapart1" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationZ="-1dp"
+        app:layout_constraintBottom_toTopOf="@+id/textview_messages"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/battlearenapart2" />
 
 </android.support.constraint.ConstraintLayout>

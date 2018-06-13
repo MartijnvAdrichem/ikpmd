@@ -12,7 +12,9 @@
         android:layout_height="34dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="TextView"
+        android:textAllCaps="true"
         app:layout_constraintEnd_toStartOf="@+id/levelScore"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +25,9 @@
         android:layout_height="34dp"
         android:layout_marginEnd="18dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="TextView"
+        android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/usernameScore"
         app:layout_constraintTop_toTopOf="parent" />

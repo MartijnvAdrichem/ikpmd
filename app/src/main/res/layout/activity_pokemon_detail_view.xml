@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/HomeBackgroundColor"
     tools:context=".pokemon.PokemonDetailView">
 
     <ImageView
@@ -20,10 +21,12 @@
     <TextView
         android:id="@+id/pokemon_name_label"
         android:layout_width="192dp"
-        android:layout_height="29dp"
+        android:layout_height="33dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="PokemonName"
+        android:textAllCaps="true"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintStart_toEndOf="@+id/pokemon_image"
@@ -35,6 +38,7 @@
         android:layout_width="43dp"
         android:layout_height="19dp"
         android:layout_marginStart="20dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Level"
         app:layout_constraintStart_toEndOf="@+id/pokemon_image"
         app:layout_constraintTop_toBottomOf="@+id/pokemon_name_label" />
@@ -43,6 +47,7 @@
         android:id="@+id/pokemon_level_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="999"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/pokemon_name_label" />
@@ -67,6 +72,7 @@
         android:layout_marginEnd="88dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="99999"
         app:layout_constraintEnd_toStartOf="@+id/pokemon_nextlevelxp_label"
         app:layout_constraintStart_toEndOf="@+id/pokemon_image"
@@ -78,6 +84,7 @@
         android:layout_height="19dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="43dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="99999"
         android:textAlignment="viewEnd"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,6 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Defence"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -97,6 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Attack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -107,6 +116,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="47dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Hitpoints"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pokemon_image" />
@@ -116,6 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="999"
         android:textAlignment="textEnd"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -126,6 +137,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="999"
         android:textAlignment="textEnd"
         app:layout_constraintStart_toEndOf="@+id/textView5"
@@ -137,6 +149,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
         android:layout_marginTop="47dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="999"
         android:textAlignment="textEnd"
         app:layout_constraintStart_toEndOf="@+id/textView4"

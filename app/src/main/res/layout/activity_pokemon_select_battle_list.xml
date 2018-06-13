@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/HomeBackgroundColor"
     tools:context=".pokemon.PokemonSelectBattleList">
 
 
@@ -14,6 +15,8 @@
         android:layout_marginBottom="25dp"
         android:layout_marginTop="40dp"
         android:layout_weight="1"
+        android:divider="?attr/dividerVertical"
+        android:dividerHeight="@dimen/cardview_default_elevation"
         app:layout_constraintBottom_toTopOf="@+id/cancel_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -27,6 +30,7 @@
         android:layout_marginEnd="90dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Select 6 pokemon for battle"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,6 +45,8 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="139dp"
         android:layout_marginStart="16dp"
+        android:background="@color/ButtonBackgroundColor"
+        android:fontFamily="@font/bubblegum_sans"
         android:onClick="goBack"
         android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,6 +59,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
+        android:background="@color/ButtonBackgroundColor"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Go Battle!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

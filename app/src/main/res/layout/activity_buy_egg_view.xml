@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/HomeBackgroundColor"
     tools:context=".shop.BuyEggView">
 
     <ImageView
@@ -26,6 +27,7 @@
         android:layout_marginBottom="24dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="42dp"
+        android:fontFamily="@font/bubblegum_sans"
         android:text="Oh?"
         android:textAlignment="center"
         android:textSize="40sp"
