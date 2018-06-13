@@ -49,7 +49,10 @@
             android:name=".highscores.HighscoreView"
             android:label="Highscores" />
         <activity android:name=".ProfileView"
-            android:label="My Profile"></activity>
+            android:label="My Profile"/>
+        <activity android:name=".pokemon.DifficultySelectView"
+            android:label="Select difficulty"/>
+
     </application>
 
 </manifest>
