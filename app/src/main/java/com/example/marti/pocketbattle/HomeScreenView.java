@@ -26,7 +26,7 @@ public class HomeScreenView extends AppCompatActivity {
     private FirebaseAuth mAuth;
     TextView hsText;
     public static FirebaseUser currentUser;
-    ImageButton listViewButton;
+    ImageButton shopButton;
     ImageButton battleButton;
     Button logoutButton;
     ImageButton profileButton;
@@ -42,7 +42,7 @@ public class HomeScreenView extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen_view);
         mAuth = FirebaseAuth.getInstance();
         hsText = (TextView) findViewById(R.id.hsText);
-        listViewButton = findViewById(R.id.pokemonButton);
+        shopButton = findViewById(R.id.shopButton);
         battleButton = findViewById(R.id.battleButton);
         logoutButton = findViewById(R.id.logoutButton);
         profileButton = findViewById(R.id.profileButton);
@@ -77,8 +77,8 @@ public class HomeScreenView extends AppCompatActivity {
          });
         }
 
-        listViewButton.setOnClickListener(e -> {
-            startActivity(new Intent(HomeScreenView.this, PokemonList.class));
+        shopButton.setOnClickListener(e -> {
+            startActivity(new Intent(HomeScreenView.this, ShopView.class));
 
         });
 
@@ -93,7 +93,7 @@ public class HomeScreenView extends AppCompatActivity {
         });
 
         profileButton.setOnClickListener(e ->{
-            startActivity(new Intent(HomeScreenView.this, ShopView.class));
+            startActivity(new Intent(HomeScreenView.this, ProfileView.class));
         });
 
         highscoreButton.setOnClickListener(e ->{

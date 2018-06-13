@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileView">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cardView2"
+        android:layout_width="344dp"
+        android:layout_height="217dp"
+        android:layout_marginBottom="21dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/ProfileUsernameTV"
+            android:layout_width="249dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="79dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="monospace"
+            android:text="Username"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/ProfileLevelTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ProfileLevelTV"
+            android:layout_width="243dp"
+            android:layout_height="34dp"
+            android:layout_marginEnd="85dp"
+            android:layout_marginStart="16dp"
+            android:text="Level 2"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ProfileUsernameTV" />
+
+        <ProgressBar
+            android:id="@+id/ProfileProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="243dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="85dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ProfileLevelTV" />
+
+        <Button
+            android:id="@+id/MyPokemonBT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="240dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="17dp"
+            android:text="My Pokémon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ProfileProgressBar" />
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="344dp"
+        android:layout_height="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/cardView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cardView3"
+        android:layout_width="344dp"
+        android:layout_height="264dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:layout_marginEnd="272dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Stats"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView22"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/winsChart"
+            android:layout_width="164dp"
+            android:layout_height="164dp"
+            android:layout_marginBottom="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/damageChart"
+            android:layout_width="164dp"
+            android:layout_height="164dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/winsChart" />
+
+        <TextView
+            android:id="@+id/tvDamageChart"
+            android:layout_width="57dp"
+            android:layout_height="44dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:text="W: 1 L: 2"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/damageChart"
+            app:layout_constraintEnd_toEndOf="@+id/damageChart"
+            app:layout_constraintStart_toStartOf="@+id/damageChart"
+            app:layout_constraintTop_toTopOf="@+id/damageChart" />
+
+        <TextView
+            android:id="@+id/tvWinsChart"
+            android:layout_width="57dp"
+            android:layout_height="44dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="W: 1 L: 2"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/winsChart"
+            app:layout_constraintEnd_toEndOf="@+id/winsChart"
+            app:layout_constraintStart_toStartOf="@+id/winsChart"
+            app:layout_constraintTop_toTopOf="@+id/winsChart" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="158dp"
+            android:layout_height="27dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="6dp"
+            android:text="Wins / Loses"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/winsChart"
+            app:layout_constraintEnd_toStartOf="@+id/textView24"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="160dp"
+            android:layout_height="26dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="63dp"
+            android:text="Damage Done / Taken"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/damageChart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

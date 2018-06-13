@@ -48,7 +48,8 @@
         <activity
             android:name=".highscores.HighscoreView"
             android:label="Highscores" />
-        <activity android:name=".pokemon.DifficultySelectView"></activity>
+        <activity android:name=".ProfileView"
+            android:label="My Profile"></activity>
     </application>
 
 </manifest>
