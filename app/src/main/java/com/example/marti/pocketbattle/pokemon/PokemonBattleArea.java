@@ -441,4 +441,8 @@ public class PokemonBattleArea extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void flee(View v){
+        startActivity(new Intent(PokemonBattleArea.this, HomeScreenView.class));
+    }
 }

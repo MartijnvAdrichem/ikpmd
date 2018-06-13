@@ -40,6 +40,8 @@ public class PokemonSelectBattleList extends AppCompatActivity {
     private FirebaseAuth mAuth;
     int difficulty = 0;
 
+    Button goBackButon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,8 @@ public class PokemonSelectBattleList extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.my_list_view);
         goBattleButton = findViewById(R.id.start_button);
+        goBackButon = findViewById(R.id.cancel_button);
+
         selectedPokemon = new ArrayList<>();
 
         Bundle b = getIntent().getExtras();
@@ -114,6 +118,10 @@ public class PokemonSelectBattleList extends AppCompatActivity {
             }
         });
         return pokemons;
+    }
+
+    public void goBack(View v){
+        startActivity(new Intent(PokemonSelectBattleList.this, DifficultySelectView.class));
     }
 
 }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.marti.pocketbattle.HomeScreenView;
 import com.example.marti.pocketbattle.R;
 import com.example.marti.pocketbattle.models.Pokemon;
 
@@ -35,6 +36,9 @@ public class DifficultySelectView extends AppCompatActivity {
 
     }
 
+    public void goBack(View v){
+        startActivity(new Intent(DifficultySelectView.this, HomeScreenView.class));
+    }
     public void goToNext(int diff){
         Intent intent = new Intent(DifficultySelectView.this, PokemonSelectBattleList.class);
         Bundle b = new Bundle();
