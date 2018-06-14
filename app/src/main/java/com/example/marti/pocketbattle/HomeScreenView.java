@@ -97,6 +97,8 @@ public class HomeScreenView extends AppCompatActivity {
 
              }
          });
+        } else {
+            startActivity(new Intent(HomeScreenView.this, LoginView.class));
         }
 
         shopButton.setOnClickListener(e -> {
