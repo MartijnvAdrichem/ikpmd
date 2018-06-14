@@ -12,43 +12,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="87dp"
+        android:layout_marginTop="49dp"
         android:background="@color/ButtonBackgroundColor"
         android:fontFamily="@font/bubblegum_sans"
         android:onClick="buySmallEgg"
         android:text="Buy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/eggview1"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="66dp"
         android:layout_marginStart="3dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="1000 coins"
-        app:layout_constraintStart_toEndOf="@+id/eggview3"
-        app:layout_constraintTop_toBottomOf="@+id/Bi" />
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        app:layout_constraintStart_toEndOf="@+id/eggview3" />
 
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="67dp"
         android:layout_marginStart="3dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="400 coins"
-        app:layout_constraintStart_toEndOf="@+id/eggview2"
-        app:layout_constraintTop_toBottomOf="@+id/Medium_Egg" />
+        app:layout_constraintBottom_toTopOf="@+id/Bi"
+        app:layout_constraintStart_toEndOf="@+id/eggview2" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="201dp"
         android:layout_marginStart="3dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="150 coins"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/eggview1"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -56,11 +58,13 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="65dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="Small Egg"
         android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/eggview1"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,7 +84,6 @@
         android:layout_width="90dp"
         android:layout_height="119dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/eggview4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eggview2"
         app:srcCompat="@drawable/largeegg" />
@@ -100,7 +103,6 @@
         android:layout_height="119dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/eggview2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/smallegg" />
@@ -109,11 +111,13 @@
         android:id="@+id/Medium_Egg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="66dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="Medium Egg"
         android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView20"
         app:layout_constraintStart_toEndOf="@+id/eggview2"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -122,49 +126,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
-        android:layout_marginTop="67dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="Large Egg"
         android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/eggview3"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintStart_toEndOf="@+id/eggview3" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
         android:layout_marginStart="3dp"
-        android:layout_marginTop="66dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="Huge Egg"
         android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/eggview4"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintStart_toEndOf="@+id/eggview4" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="83dp"
+        android:layout_marginEnd="189dp"
         android:layout_marginStart="3dp"
-        android:layout_marginTop="1dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="2500 coins"
-        app:layout_constraintStart_toEndOf="@+id/eggview4"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/eggview4" />
 
     <Button
         android:id="@+id/button_buyHugeEgg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="74dp"
+        android:layout_marginTop="72dp"
         android:background="@color/ButtonBackgroundColor"
         android:fontFamily="@font/bubblegum_sans"
         android:onClick="buyHugeEgg"
         android:text="Buy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/eggview4"
         app:layout_constraintTop_toBottomOf="@+id/button_buyLargeEgg" />
 
     <Button
@@ -172,14 +175,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="144dp"
         android:layout_marginTop="71dp"
         android:background="@color/ButtonBackgroundColor"
         android:fontFamily="@font/bubblegum_sans"
         android:onClick="buyLargeEgg"
         android:text="Buy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/eggview3"
         app:layout_constraintTop_toBottomOf="@+id/button_buyMediumEgg" />
 
     <Button
@@ -187,14 +188,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="144dp"
         android:layout_marginTop="71dp"
         android:background="@color/ButtonBackgroundColor"
         android:fontFamily="@font/bubblegum_sans"
         android:onClick="buyMediumEgg"
         android:text="Buy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/eggview2"
         app:layout_constraintTop_toBottomOf="@+id/button_buySmallEgg" />
 
     <TextView
