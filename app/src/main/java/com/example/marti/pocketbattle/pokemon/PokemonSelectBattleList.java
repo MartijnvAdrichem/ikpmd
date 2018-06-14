@@ -1,8 +1,6 @@
 package com.example.marti.pocketbattle.pokemon;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.marti.pocketbattle.HomeScreenView;
-import com.example.marti.pocketbattle.LoginView;
 import com.example.marti.pocketbattle.R;
 import com.example.marti.pocketbattle.models.Pokemon;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,7 +18,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +65,9 @@ public class PokemonSelectBattleList extends AppCompatActivity {
                     i++;
                     bb.putSerializable(i + "", pokemon);
                 }
+                for (Pokemon pokemon: pokemons) {
+                    pokemon.isClicked = false;
+                }
                 bb.putInt("difficulty", difficulty);
                 intent.putExtras(bb);
                 startActivity(intent);
@@ -80,11 +79,15 @@ public class PokemonSelectBattleList extends AppCompatActivity {
                                              public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                                                  if(selectedPokemon.contains(pokemons.get(position))){
                                                      selectedPokemon.remove(pokemons.get(position));
-                                                     view.setBackgroundColor(0);
+                                                     pokemons.get(position).isClicked = false;
+                                                     listView.setAdapter(mAdapter);
+                                                     //mAdapter.notifyDataSetChanged();
 
                                                  } else {
-                                                        view.setBackgroundColor(Color.RED);
+                                                     pokemons.get(position).isClicked = true;
                                                      selectedPokemon.add(pokemons.get(position));
+                                                     //listView.setAdapter(mAdapter);
+                                                    mAdapter.notifyDataSetChanged();
                                                  }
                                              }
                                          }

@@ -1,6 +1,7 @@
 package com.example.marti.pocketbattle.pokemon;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +49,13 @@ public class PokemonAdapter  extends ArrayAdapter<Pokemon> {
         } catch(IOException ex) {
             ex.printStackTrace();
         }
+
+        if(pokemon.isClicked){
+            convertView.setBackgroundColor(Color.RED);
+        } else {
+            convertView.setBackgroundColor(0);
+
+        }
         vh.name.setText((CharSequence) pokemon.identifier);
         vh.level.setText(pokemon.level + "");
 //        int resID = getContext().getResources().getIdentifier("pokemon/0.png", "drawable",  getContext().getPackageName());
@@ -55,6 +63,11 @@ public class PokemonAdapter  extends ArrayAdapter<Pokemon> {
 //        Picasso.get().load("file:///assets/1.png").resize(160, 160).into(vh.pokemonImage);
 
         return convertView;
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
     }
 
     private static class ViewHolder {

@@ -18,6 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import static com.example.marti.pocketbattle.HomeScreenView.isOnline;
+
 public class LoginView extends AppCompatActivity {
 
     EditText usernameInput;
@@ -64,6 +66,15 @@ public class LoginView extends AppCompatActivity {
     }
 
     public void singIn(String email, String password){
+        if(!isOnline(LoginView.this)){
+            Toast.makeText(LoginView.this, "You have no internet connection!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(email == null || email.length() == 0 || password == null || password.length() == 0){
+            Toast.makeText(LoginView.this, "Fill in the email and password", Toast.LENGTH_SHORT).show();
+            return;
+        }
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

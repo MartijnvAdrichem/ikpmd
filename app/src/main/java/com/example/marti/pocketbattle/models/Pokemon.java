@@ -30,6 +30,7 @@ public class Pokemon implements Serializable{
     public int base_hp;
     public int base_defence;
 
+    public boolean isClicked;
 
     ArrayList<PokemonType> pokemonTypes;
    public ArrayList<Move> moves;

@@ -1,8 +1,11 @@
 package com.example.marti.pocketbattle;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -43,11 +46,14 @@ public class HomeScreenView extends AppCompatActivity {
 
     public static boolean musicPlaying = true;
     public static final String PREFS_NAME = "PokemonPrefs";
+    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen_view);
+
+        HomeScreenView.context = getApplicationContext();
         mAuth = FirebaseAuth.getInstance();
         hsText = (TextView) findViewById(R.id.hsText);
         shopButton = findViewById(R.id.shopButton);
@@ -80,6 +86,11 @@ public class HomeScreenView extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         currentUser = mAuth.getCurrentUser();
+
+        if(!isOnline(HomeScreenView.this)){
+            mAuth.signOut();
+            startActivity(new Intent(HomeScreenView.this, LoginView.class));
+        }
 
         if (currentUser != null) {
 
@@ -145,5 +156,13 @@ public class HomeScreenView extends AppCompatActivity {
         HomeScreenView.musicPlaying = !HomeScreenView.musicPlaying;
         editor.putBoolean("musicPlaying", HomeScreenView.musicPlaying);
         editor.commit();
+    }
+
+
+    public static boolean isOnline(Context context) {
+        ConnectivityManager cm =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }
