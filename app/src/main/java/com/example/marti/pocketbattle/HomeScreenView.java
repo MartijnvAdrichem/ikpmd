@@ -60,7 +60,7 @@ public class HomeScreenView extends AppCompatActivity {
 
 
         db = FirebaseDatabase.getInstance();
-        userRef = db.getReference("users/" + currentUser.getUid());
+        userRef = db.getReference("users/" + currentUser.getUid() + "/user");
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         HomeScreenView.musicPlaying = settings.getBoolean("musicPlaying", true);
@@ -86,14 +86,15 @@ public class HomeScreenView extends AppCompatActivity {
          userRef.addValueEventListener(new ValueEventListener() {
              @Override
              public void onDataChange(DataSnapshot dataSnapshot) {
-                 for(DataSnapshot d : dataSnapshot.getChildren()){
-                      user = d.getValue(User.class);
-                 }
+                // for(DataSnapshot d : dataSnapshot.getChildren()){
+                      user = dataSnapshot.getValue(User.class);
+                // }
                  hsText.setText("Welcome, " + user.username);
              }
 
              @Override
              public void onCancelled(DatabaseError databaseError) {
+                 startActivity(new Intent(HomeScreenView.this, LoginView.class));
 
              }
          });

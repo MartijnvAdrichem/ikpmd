@@ -12,6 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.marti.pocketbattle.models.Pokemon;
+import com.example.marti.pocketbattle.pokemon.PokemonSelectBattleList;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -99,6 +100,11 @@ public class RegisterView extends AppCompatActivity {
     }
 
     public void createAccount(String username, String password){
+
+        if(password.length() < 6){
+            Toast.makeText(RegisterView.this, "Your password needs to be atleast 6 characters", Toast.LENGTH_SHORT).show();
+        }
+
         mAuth.createUserWithEmailAndPassword(username, password)
                 .addOnSuccessListener(RegisterView.this, new OnSuccessListener<AuthResult>(){
                     @Override
