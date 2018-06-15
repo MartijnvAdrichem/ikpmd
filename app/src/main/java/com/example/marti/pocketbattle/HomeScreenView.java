@@ -3,6 +3,7 @@ package com.example.marti.pocketbattle;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -42,6 +43,8 @@ public class HomeScreenView extends AppCompatActivity {
     public static User user;
     FirebaseDatabase db;
 
+    ImageButton musicButton;
+
     public static MediaPlayer mediaPlayer;
 
     public static boolean musicPlaying = true;
@@ -63,7 +66,7 @@ public class HomeScreenView extends AppCompatActivity {
         currentUser = mAuth.getCurrentUser();
         battleButton = findViewById(R.id.battleButton);
         highscoreButton = findViewById(R.id.highscoreButton);
-
+        musicButton = findViewById(R.id.musicbutton);
 
         db = FirebaseDatabase.getInstance();
         userRef = db.getReference("users/" + currentUser.getUid() + "/user");
@@ -77,9 +80,11 @@ public class HomeScreenView extends AppCompatActivity {
             mediaPlayer.setLooping(true);
         }
         if(HomeScreenView.musicPlaying){
-            if(HomeScreenView.musicPlaying) {
-                HomeScreenView.mediaPlayer.start();
-            }
+            musicButton.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_lock_silent_mode_off, HomeScreenView.this.getTheme()));
+            HomeScreenView.mediaPlayer.start();
+        } else {
+            musicButton.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_lock_silent_mode, HomeScreenView.this.getTheme()));
+
         }
 
 
@@ -100,6 +105,9 @@ public class HomeScreenView extends AppCompatActivity {
                     User usr = dataSnapshot.getValue(User.class);
                     if(usr != null) {
                         user = usr;
+                    } else {
+                        startActivity(new Intent(HomeScreenView.this, LoginView.class));
+                        return;
                     }
                     // }
                     hsText.setText("Welcome, " + user.username);
@@ -156,8 +164,11 @@ public class HomeScreenView extends AppCompatActivity {
 
         if(HomeScreenView.musicPlaying){
             HomeScreenView.mediaPlayer.pause();
+            musicButton.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_lock_silent_mode, HomeScreenView.this.getTheme()));
         } else {
             HomeScreenView.mediaPlayer.start();
+            musicButton.setImageDrawable(getResources().getDrawable(android.R.drawable.ic_lock_silent_mode_off, HomeScreenView.this.getTheme()));
+
         }
         HomeScreenView.musicPlaying = !HomeScreenView.musicPlaying;
         editor.putBoolean("musicPlaying", HomeScreenView.musicPlaying);
