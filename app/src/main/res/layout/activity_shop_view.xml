@@ -35,12 +35,12 @@
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="67dp"
         android:layout_marginStart="3dp"
+        android:layout_marginTop="1dp"
         android:fontFamily="@font/bubblegum_sans"
         android:text="400 coins"
-        app:layout_constraintBottom_toTopOf="@+id/Bi"
-        app:layout_constraintStart_toEndOf="@+id/eggview2" />
+        app:layout_constraintStart_toEndOf="@+id/eggview2"
+        app:layout_constraintTop_toBottomOf="@+id/Medium_Egg" />
 
     <TextView
         android:id="@+id/textView17"
