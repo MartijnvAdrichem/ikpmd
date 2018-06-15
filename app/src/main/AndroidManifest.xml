@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginView"
-            android:label="Log In">
+            android:label="Pocket Battle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
