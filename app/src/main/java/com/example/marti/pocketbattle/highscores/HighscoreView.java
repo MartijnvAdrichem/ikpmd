@@ -47,7 +47,7 @@ public class HighscoreView extends AppCompatActivity {
 
     public void onStart(){
         super.onStart();
-        usersRef.addValueEventListener(new ValueEventListener() {
+        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot d : dataSnapshot.getChildren()) {

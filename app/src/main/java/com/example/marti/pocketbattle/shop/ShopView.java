@@ -87,7 +87,7 @@ public class ShopView extends AppCompatActivity {
             HomeScreenView.user.coins -= cost;
             HomeScreenView.updateUser();
 
-        allePokemonRef.addValueEventListener(new ValueEventListener() {
+        allePokemonRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot d : dataSnapshot.getChildren()){

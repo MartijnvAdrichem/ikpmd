@@ -58,7 +58,7 @@ public class PokemonList extends AppCompatActivity {
         DatabaseReference myRef = database.getReference("users/" + HomeScreenView.currentUser.getUid() + "/pokemon");
         ArrayList<Pokemon> pokemons = new ArrayList<>();
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot d : dataSnapshot.getChildren()){

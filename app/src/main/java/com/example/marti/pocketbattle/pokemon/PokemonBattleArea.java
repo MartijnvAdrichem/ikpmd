@@ -292,7 +292,7 @@ public class PokemonBattleArea extends AppCompatActivity {
         ArrayList<Pokemon> pokemons = new ArrayList<>();
         computerSelectedPokemon = new ArrayList<>();
 
-        pokemonRef.addValueEventListener(new ValueEventListener() {
+        pokemonRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot d : dataSnapshot.getChildren()){

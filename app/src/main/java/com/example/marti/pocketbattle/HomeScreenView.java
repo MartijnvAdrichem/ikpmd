@@ -81,10 +81,8 @@ public class HomeScreenView extends AppCompatActivity {
                 HomeScreenView.mediaPlayer.start();
             }
         }
-    }
 
-    public void onStart() {
-        super.onStart();
+
         currentUser = mAuth.getCurrentUser();
 
         if(!isOnline(HomeScreenView.this)){
@@ -94,24 +92,32 @@ public class HomeScreenView extends AppCompatActivity {
 
         if (currentUser != null) {
 
-         userRef.addValueEventListener(new ValueEventListener() {
-             @Override
-             public void onDataChange(DataSnapshot dataSnapshot) {
-                // for(DataSnapshot d : dataSnapshot.getChildren()){
-                      user = dataSnapshot.getValue(User.class);
-                // }
-                 hsText.setText("Welcome, " + user.username);
-             }
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
-             @Override
-             public void onCancelled(DatabaseError databaseError) {
-                 startActivity(new Intent(HomeScreenView.this, LoginView.class));
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // for(DataSnapshot d : dataSnapshot.getChildren()){
+                    User usr = dataSnapshot.getValue(User.class);
+                    if(usr != null) {
+                        user = usr;
+                    }
+                    // }
+                    hsText.setText("Welcome, " + user.username);
+                }
 
-             }
-         });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    startActivity(new Intent(HomeScreenView.this, LoginView.class));
+
+                }
+            });
         } else {
             startActivity(new Intent(HomeScreenView.this, LoginView.class));
         }
+    }
+
+    public void onStart() {
+        super.onStart();
 
         shopButton.setOnClickListener(e -> {
             startActivity(new Intent(HomeScreenView.this, ShopView.class));
