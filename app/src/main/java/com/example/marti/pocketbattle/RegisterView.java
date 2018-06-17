@@ -103,6 +103,15 @@ public class RegisterView extends AppCompatActivity {
 
         if(password.length() < 6){
             Toast.makeText(RegisterView.this, "Your password needs to be atleast 6 characters", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(username.length() < 5){
+            Toast.makeText(RegisterView.this, "Your email needs to be atleast 5 characters", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(this.username.getText().toString().length() < 5){
+            Toast.makeText(RegisterView.this, "Your username needs to be atleast 5 characters", Toast.LENGTH_SHORT).show();
+            return;
         }
 
         mAuth.createUserWithEmailAndPassword(username, password)
